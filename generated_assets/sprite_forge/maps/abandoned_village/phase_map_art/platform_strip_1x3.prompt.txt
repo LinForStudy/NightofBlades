@@ -1,0 +1,1 @@
+Project-native 1x3 platform strip library: left cap, seamless middle, right cap for current one-way platform StaticBody2D nodes; visual skin only.

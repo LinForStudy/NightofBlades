@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/wave_data.gd" id="1_wave_data"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/rift_grunt.tscn" id="2_grunt"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/archer.tscn" id="3_archer"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/bomber.tscn" id="4_bomber"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/flying_eye.tscn" id="5_eye"]
+
+[resource]
+script = ExtResource("1_wave_data")
+wave_id = &"survival_high_pressure"
+start_time = 450.0
+end_time = 600.0
+spawn_interval = 0.78
+max_alive = 28
+enemy_scenes = Array[PackedScene]([ExtResource("2_grunt"), ExtResource("3_archer"), ExtResource("4_bomber"), ExtResource("5_eye")])
+enemy_weights = Array[int]([28, 28, 25, 19])
+elite_chance = 0.09
+health_multiplier = 1.46
+damage_multiplier = 1.30
+speed_multiplier = 1.12
+special_event = &"high_pressure"

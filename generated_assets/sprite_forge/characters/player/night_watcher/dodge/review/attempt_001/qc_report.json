@@ -1,0 +1,93 @@
+{
+  "input": "generated_assets\\sprite_forge\\characters\\player\\night_watcher\\dodge\\review\\attempt_001\\sheet-transparent.png",
+  "expected_size": [
+    576,
+    96
+  ],
+  "actual_size": [
+    576,
+    96
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "bbox": [
+        24,
+        36,
+        72,
+        82
+      ],
+      "valid": true,
+      "visible_height": 46,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 1,
+      "bbox": [
+        17,
+        45,
+        78,
+        82
+      ],
+      "valid": true,
+      "visible_height": 37,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 2,
+      "bbox": [
+        14,
+        53,
+        81,
+        82
+      ],
+      "valid": true,
+      "visible_height": 29,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 3,
+      "bbox": [
+        15,
+        56,
+        80,
+        82
+      ],
+      "valid": true,
+      "visible_height": 26,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 4,
+      "bbox": [
+        23,
+        38,
+        73,
+        82
+      ],
+      "valid": true,
+      "visible_height": 44,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 5,
+      "bbox": [
+        24,
+        38,
+        71,
+        82
+      ],
+      "valid": true,
+      "visible_height": 44,
+      "feet_y": 81,
+      "touches_edge": false
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

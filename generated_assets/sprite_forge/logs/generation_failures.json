@@ -1,0 +1,54 @@
+{
+    "version":  1,
+    "policy":  {
+                   "health_check_attempts_per_asset":  1,
+                   "max_retries":  2,
+                   "retry_delays_seconds":  [
+                                                15,
+                                                45
+                                            ],
+                   "sensitive_fields_recorded":  false
+               },
+    "failures":  [
+                     {
+                         "timestamp_utc":  "2026-07-15T03:02:04.6461661Z",
+                         "asset_name":  "nightwatcher_idle",
+                         "interface_type":  "image_edits",
+                         "attempt_number":  1,
+                         "error_category":  "network_error",
+                         "message":  "Image service request failed before image output or postprocessing."
+                     },
+                     {
+                         "timestamp_utc":  "2026-07-15T03:02:04.6461661Z",
+                         "asset_name":  "nightwatcher_idle",
+                         "interface_type":  "image_edits",
+                         "attempt_number":  2,
+                         "error_category":  "network_error",
+                         "message":  "Image service request failed before image output or postprocessing."
+                     },
+                     {
+                         "timestamp_utc":  "2026-07-15T03:02:04.6461661Z",
+                         "asset_name":  "nightwatcher_idle",
+                         "interface_type":  "images_generations",
+                         "attempt_number":  3,
+                         "error_category":  "network_error",
+                         "message":  "Fallback generation request failed before image output or postprocessing."
+                     },
+                     {
+                         "timestamp_utc":  "2026-07-15T03:17:45.4808213Z",
+                         "asset_name":  "nightwatcher_idle",
+                         "interface_type":  "images_generations",
+                         "attempt_number":  4,
+                         "error_category":  "network_error",
+                         "message":  "Minimal health check failed before image output, postprocessing, or project integration."
+                     },
+                     {
+                         "timestamp_utc":  "2026-07-15T03:31:33.6792467Z",
+                         "asset_name":  "nightwatcher_idle",
+                         "interface_type":  "images_generations",
+                         "attempt_number":  5,
+                         "error_category":  "network_error",
+                         "message":  "Explicit built-in subscription-mode request failed before image output, postprocessing, or workspace write."
+                     }
+                 ]
+}

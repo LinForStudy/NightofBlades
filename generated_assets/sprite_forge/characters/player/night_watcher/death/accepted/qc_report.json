@@ -1,0 +1,119 @@
+{
+  "input": "generated_assets\\sprite_forge\\characters\\player\\night_watcher\\death\\accepted\\nightwatcher_death_transparent.png",
+  "expected_size": [
+    768,
+    96
+  ],
+  "actual_size": [
+    768,
+    96
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "bbox": [
+        14,
+        12,
+        82,
+        82
+      ],
+      "valid": true,
+      "visible_height": 70,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 1,
+      "bbox": [
+        16,
+        16,
+        79,
+        82
+      ],
+      "valid": true,
+      "visible_height": 66,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 2,
+      "bbox": [
+        18,
+        30,
+        78,
+        82
+      ],
+      "valid": true,
+      "visible_height": 52,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 3,
+      "bbox": [
+        7,
+        37,
+        89,
+        82
+      ],
+      "valid": true,
+      "visible_height": 45,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 4,
+      "bbox": [
+        9,
+        48,
+        86,
+        82
+      ],
+      "valid": true,
+      "visible_height": 34,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 5,
+      "bbox": [
+        9,
+        54,
+        86,
+        82
+      ],
+      "valid": true,
+      "visible_height": 28,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 6,
+      "bbox": [
+        6,
+        58,
+        89,
+        82
+      ],
+      "valid": true,
+      "visible_height": 24,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 7,
+      "bbox": [
+        6,
+        60,
+        89,
+        82
+      ],
+      "valid": true,
+      "visible_height": 22,
+      "feet_y": 81,
+      "touches_edge": false
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

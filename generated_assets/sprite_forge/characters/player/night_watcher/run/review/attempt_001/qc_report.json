@@ -1,0 +1,119 @@
+{
+  "input": "generated_assets\\sprite_forge\\characters\\player\\night_watcher\\run\\review\\attempt_001\\sheet-transparent.png",
+  "expected_size": [
+    768,
+    96
+  ],
+  "actual_size": [
+    768,
+    96
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "bbox": [
+        21,
+        17,
+        74,
+        82
+      ],
+      "valid": true,
+      "visible_height": 65,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 1,
+      "bbox": [
+        22,
+        16,
+        74,
+        82
+      ],
+      "valid": true,
+      "visible_height": 66,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 2,
+      "bbox": [
+        21,
+        15,
+        75,
+        82
+      ],
+      "valid": true,
+      "visible_height": 67,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 3,
+      "bbox": [
+        20,
+        17,
+        76,
+        82
+      ],
+      "valid": true,
+      "visible_height": 65,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 4,
+      "bbox": [
+        21,
+        15,
+        75,
+        82
+      ],
+      "valid": true,
+      "visible_height": 67,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 5,
+      "bbox": [
+        20,
+        17,
+        76,
+        82
+      ],
+      "valid": true,
+      "visible_height": 65,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 6,
+      "bbox": [
+        21,
+        16,
+        75,
+        82
+      ],
+      "valid": true,
+      "visible_height": 66,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 7,
+      "bbox": [
+        20,
+        17,
+        76,
+        82
+      ],
+      "valid": true,
+      "visible_height": 65,
+      "feet_y": 81,
+      "touches_edge": false
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

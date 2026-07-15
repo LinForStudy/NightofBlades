@@ -1,0 +1,2 @@
+User-provided GPT candidate for nightwatcher_land.
+Required target: 2 frames, single horizontal strip, each frame 96x96 after processing, transparent background after magenta cleanup, right-facing landing recovery pose, same Night Watcher identity as accepted idle/run/jump/fall assets, no slash FX, no dust, no text. Grounded action: feet should remain aligned across frames.

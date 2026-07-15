@@ -1,0 +1,1 @@
+Derived from existing generated abandoned-village far background style lock. Runtime scenery-only 2560x720 parallax layer: cold blue-gray storm sky, distant silhouettes, restrained magenta rift beams, no gameplay foreground objects.

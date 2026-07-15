@@ -1,0 +1,54 @@
+{
+  "input": "generated_assets\\sprite_forge\\characters\\player\\night_watcher\\hurt\\accepted\\nightwatcher_hurt_transparent.png",
+  "expected_size": [
+    288,
+    96
+  ],
+  "actual_size": [
+    288,
+    96
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "bbox": [
+        19,
+        10,
+        77,
+        82
+      ],
+      "valid": true,
+      "visible_height": 72,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 1,
+      "bbox": [
+        16,
+        16,
+        80,
+        82
+      ],
+      "valid": true,
+      "visible_height": 66,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 2,
+      "bbox": [
+        18,
+        15,
+        78,
+        82
+      ],
+      "valid": true,
+      "visible_height": 67,
+      "feet_y": 81,
+      "touches_edge": false
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

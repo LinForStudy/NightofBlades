@@ -1,0 +1,199 @@
+{
+  "id": "abandoned_village_map_art_phase",
+  "map_mode": "side_scroll_mode",
+  "visual_model": "parallax_layers",
+  "engine_target": "project-native Godot scene",
+  "stage_canvas": "1280x720",
+  "stage_segment_count": 2,
+  "stage_length": 2400,
+  "art_source": "existing generated far_bg style lock plus deterministic layered integration because built-in image generation failed with network error",
+  "runtime_layers": [
+    {
+      "id": "sky_far",
+      "path": "res://assets/environments/abandoned_village/sky_far.png",
+      "size": [
+        2560,
+        720
+      ],
+      "scroll_factor": 0.35,
+      "render_order": -50
+    },
+    {
+      "id": "far_bg",
+      "path": "res://assets/environments/abandoned_village/far_bg.png",
+      "size": [
+        2560,
+        720
+      ],
+      "scroll_factor": 0.55,
+      "render_order": -45
+    },
+    {
+      "id": "mid_bg",
+      "path": "res://assets/environments/abandoned_village/mid_bg.png",
+      "size": [
+        2560,
+        720
+      ],
+      "scroll_factor": 0.75,
+      "render_order": -40
+    },
+    {
+      "id": "near_bg",
+      "path": "res://assets/environments/abandoned_village/near_bg.png",
+      "size": [
+        2560,
+        720
+      ],
+      "scroll_factor": 0.9,
+      "render_order": -35
+    },
+    {
+      "id": "foreground_overlay",
+      "path": "res://assets/environments/abandoned_village/foreground_overlay.png",
+      "size": [
+        2560,
+        720
+      ],
+      "scroll_factor": 1.0,
+      "render_order": 80
+    }
+  ],
+  "platform_library": {
+    "id": "village_platform_strip_1x3",
+    "path": "res://assets/environments/abandoned_village/platform_strip_1x3.png",
+    "cell_size": [
+      96,
+      28
+    ],
+    "roles": [
+      "left_cap",
+      "middle_repeat",
+      "right_cap"
+    ]
+  },
+  "collision_source": "Existing StaticBody2D rectangles in scenes/battle/battle_scene.tscn; art pixels are not used for collision.",
+  "props": [
+    {
+      "id": "wood_crate",
+      "path": "res://assets/environments/abandoned_village/props/wood_crate.png",
+      "alpha": true,
+      "occlusionClass": "low",
+      "occupantPolicy": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "broken_fence",
+      "path": "res://assets/environments/abandoned_village/props/broken_fence.png",
+      "alpha": true,
+      "occlusionClass": "low",
+      "occupantPolicy": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "rift_lamp",
+      "path": "res://assets/environments/abandoned_village/props/rift_lamp.png",
+      "alpha": true,
+      "occlusionClass": "low",
+      "occupantPolicy": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "rubble_pile",
+      "path": "res://assets/environments/abandoned_village/props/rubble_pile.png",
+      "alpha": true,
+      "occlusionClass": "low",
+      "occupantPolicy": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "straw_pile",
+      "path": "res://assets/environments/abandoned_village/props/straw_pile.png",
+      "alpha": true,
+      "occlusionClass": "low",
+      "occupantPolicy": {
+        "mode": "none"
+      }
+    },
+    {
+      "id": "torn_banner",
+      "path": "res://assets/environments/abandoned_village/props/torn_banner.png",
+      "alpha": true,
+      "occlusionClass": "low",
+      "occupantPolicy": {
+        "mode": "none"
+      }
+    }
+  ],
+  "critical_geometry": {
+    "world_left": 0,
+    "world_right": 2400,
+    "ground_top_y": 648,
+    "platforms": [
+      {
+        "id": "Step1",
+        "position": [
+          380,
+          628
+        ],
+        "size": [
+          96,
+          20
+        ],
+        "one_way": true
+      },
+      {
+        "id": "Step2",
+        "position": [
+          460,
+          598
+        ],
+        "size": [
+          96,
+          20
+        ],
+        "one_way": true
+      },
+      {
+        "id": "Step3",
+        "position": [
+          540,
+          568
+        ],
+        "size": [
+          96,
+          20
+        ],
+        "one_way": true
+      },
+      {
+        "id": "PlatformLeft",
+        "position": [
+          670,
+          526
+        ],
+        "size": [
+          260,
+          24
+        ],
+        "one_way": true
+      },
+      {
+        "id": "PlatformRight",
+        "position": [
+          980,
+          466
+        ],
+        "size": [
+          360,
+          24
+        ],
+        "one_way": true
+      }
+    ]
+  }
+}

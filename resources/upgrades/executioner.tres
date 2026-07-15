@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/upgrade_data.gd" id="1_upgrade_data"]
+
+[resource]
+script = ExtResource("1_upgrade_data")
+upgrade_id = &"executioner"
+display_name = "暴击"
+description = "暴击率+5%。"
+rarity = &"rare"
+max_stacks = 5
+weight = 32
+effect_key = &"critical_chance_bonus"
+effect_value = 0.05
+tags = Array[StringName]([&"attack"])

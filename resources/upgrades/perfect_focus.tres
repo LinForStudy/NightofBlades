@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/upgrade_data.gd" id="1_upgrade_data"]
+
+[resource]
+script = ExtResource("1_upgrade_data")
+upgrade_id = &"perfect_focus"
+display_name = "心眼"
+description = "完美闪避判定窗口+0.025秒。"
+rarity = &"rare"
+max_stacks = 4
+weight = 28
+effect_key = &"perfect_dodge_window_bonus"
+effect_value = 0.025
+tags = Array[StringName]([&"action"])

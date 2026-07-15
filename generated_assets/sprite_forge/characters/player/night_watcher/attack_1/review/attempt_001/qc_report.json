@@ -1,0 +1,77 @@
+{
+  "input": "generated_assets\\sprite_forge\\characters\\player\\night_watcher\\attack_1\\review\\attempt_001\\sheet-transparent.png",
+  "expected_size": [
+    576,
+    96
+  ],
+  "actual_size": [
+    288,
+    192
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "bbox": [
+        22,
+        18,
+        73,
+        84
+      ],
+      "valid": false,
+      "visible_height": 66,
+      "feet_y": 83,
+      "touches_edge": false
+    },
+    {
+      "index": 1,
+      "bbox": [
+        25,
+        28,
+        71,
+        84
+      ],
+      "valid": false,
+      "visible_height": 56,
+      "feet_y": 83,
+      "touches_edge": false
+    },
+    {
+      "index": 2,
+      "bbox": [
+        16,
+        23,
+        80,
+        84
+      ],
+      "valid": false,
+      "visible_height": 61,
+      "feet_y": 83,
+      "touches_edge": false
+    },
+    {
+      "index": 3,
+      "bbox": null,
+      "valid": false
+    },
+    {
+      "index": 4,
+      "bbox": null,
+      "valid": false
+    },
+    {
+      "index": 5,
+      "bbox": null,
+      "valid": false
+    }
+  ],
+  "passed": false,
+  "errors": [
+    "sheet size (288, 192) does not match (576, 96)",
+    "frame 0 feet y 83 differs from 81",
+    "frame 1 feet y 83 differs from 81",
+    "frame 2 feet y 83 differs from 81",
+    "frame 3 is empty",
+    "frame 4 is empty",
+    "frame 5 is empty"
+  ]
+}

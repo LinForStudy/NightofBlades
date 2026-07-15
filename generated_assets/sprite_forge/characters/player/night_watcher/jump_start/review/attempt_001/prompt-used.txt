@@ -1,0 +1,2 @@
+User-provided GPT candidate for nightwatcher_jump_start.
+Required target: 2-frame horizontal 96x96 sprite strip, right-facing Nightwatcher, crouch-to-airborne transition, magenta source background. Processed locally only; no generated replacement.

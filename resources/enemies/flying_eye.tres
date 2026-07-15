@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1_enemy_data"]
+
+[resource]
+script = ExtResource("1_enemy_data")
+enemy_id = &"flying_eye"
+display_name = "飞行魔眼"
+max_health = 30.0
+move_speed = 70.0
+base_damage = 8.0
+attack_range = 320.0
+preferred_range = 240.0
+attack_interval = 2.2
+aim_time = 0.3
+experience_value = 12
+tags = Array[StringName]([&"flying", &"ranged"])

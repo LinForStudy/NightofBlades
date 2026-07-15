@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/tools/phase4_validation_runner.gd" id="1_runner"]
+
+[node name="Phase4ValidationRunner" type="Node"]
+script = ExtResource("1_runner")

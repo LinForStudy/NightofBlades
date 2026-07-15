@@ -1,0 +1,195 @@
+[gd_scene load_steps=48 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_player_controller"]
+[ext_resource type="Script" path="res://scripts/combat/health_component.gd" id="2_health"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox_component.gd" id="3_hurtbox"]
+[ext_resource type="Script" path="res://scripts/combat/hitbox_component.gd" id="4_hitbox"]
+[ext_resource type="Script" path="res://scripts/skills/skill_manager.gd" id="5_skill_manager"]
+[ext_resource type="Script" path="res://scripts/skills/skill_cooldown_component.gd" id="6_skill_cooldown"]
+[ext_resource type="Resource" path="res://resources/skills/fire_slash.tres" id="7_fire_slash"]
+[ext_resource type="Resource" path="res://resources/skills/lightning_dash.tres" id="8_lightning_dash"]
+[ext_resource type="Resource" path="res://resources/skills/blade_storm.tres" id="9_blade_storm"]
+[ext_resource type="Script" path="res://scripts/player/ultimate_controller.gd" id="31_ultimate_controller"]
+[ext_resource type="Resource" path="res://resources/skills/skyfall_slash.tres" id="32_skyfall_data"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/fire_slash_lv2.tres" id="10_fire_slash_lv2"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/fire_slash_explosive_lv3.tres" id="11_fire_slash_explosive_lv3"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/fire_slash_giant_lv3.tres" id="12_fire_slash_giant_lv3"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/fire_slash_explosive_lv4.tres" id="13_fire_slash_explosive_lv4"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/fire_slash_giant_lv4.tres" id="14_fire_slash_giant_lv4"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/fire_slash_explosive_lv5.tres" id="15_fire_slash_explosive_lv5"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/fire_slash_giant_lv5.tres" id="16_fire_slash_giant_lv5"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/lightning_dash_lv2.tres" id="17_lightning_dash_lv2"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/lightning_dash_chain_lv3.tres" id="18_lightning_dash_chain_lv3"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/lightning_dash_afterimage_lv3.tres" id="19_lightning_dash_afterimage_lv3"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/lightning_dash_chain_lv4.tres" id="20_lightning_dash_chain_lv4"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/lightning_dash_afterimage_lv4.tres" id="21_lightning_dash_afterimage_lv4"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/lightning_dash_chain_lv5.tres" id="22_lightning_dash_chain_lv5"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/lightning_dash_afterimage_lv5.tres" id="23_lightning_dash_afterimage_lv5"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/blade_storm_lv2.tres" id="24_blade_storm_lv2"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/blade_storm_pull_lv3.tres" id="25_blade_storm_pull_lv3"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/blade_storm_barrage_lv3.tres" id="26_blade_storm_barrage_lv3"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/blade_storm_pull_lv4.tres" id="27_blade_storm_pull_lv4"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/blade_storm_barrage_lv4.tres" id="28_blade_storm_barrage_lv4"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/blade_storm_pull_lv5.tres" id="29_blade_storm_pull_lv5"]
+[ext_resource type="Resource" path="res://resources/skill_upgrades/blade_storm_barrage_lv5.tres" id="30_blade_storm_barrage_lv5"]
+
+[ext_resource type="Script" path="res://scripts/player/player_visual.gd" id="33_player_visual"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/characters/player/night_watcher/idle/accepted/nightwatcher_idle_transparent.png" id="34_idle"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/characters/player/night_watcher/run/accepted/nightwatcher_run_transparent.png" id="35_run"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/characters/player/night_watcher/hurt/accepted/nightwatcher_hurt_transparent.png" id="36_hurt"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/characters/player/night_watcher/death/accepted/nightwatcher_death_transparent.png" id="37_death"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/characters/player/night_watcher/attack_1/accepted/nightwatcher_attack_1_transparent.png" id="38_attack_1"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/fx/player/slash_arc/accepted/nightwatcher_slash_arc_transparent.png" id="39_slash"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/fx/player/hit_spark/accepted/nightwatcher_hit_spark_transparent.png" id="40_hit"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/characters/player/night_watcher/jump_start/accepted/nightwatcher_jump_start_transparent.png" id="41_jump_start"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/characters/player/night_watcher/jump_loop/accepted/nightwatcher_jump_loop_transparent.png" id="42_jump_loop"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/characters/player/night_watcher/fall/accepted/nightwatcher_fall_transparent.png" id="43_fall"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/characters/player/night_watcher/land/accepted/nightwatcher_land_transparent.png" id="44_land"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/characters/player/night_watcher/dodge/accepted/nightwatcher_dodge_transparent.png" id="45_dodge"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player_body"]
+size = Vector2(30, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_attack"]
+size = Vector2(116, 104)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+unique_name_in_owner = true
+position = Vector2(220, 570)
+collision_mask = 3
+script = ExtResource("1_player_controller")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_health")
+max_health = 100.0
+
+[node name="SkillManager" type="Node" parent="."]
+script = ExtResource("5_skill_manager")
+skills = Array[Resource]([ExtResource("7_fire_slash"), ExtResource("8_lightning_dash"), ExtResource("9_blade_storm")])
+skill_upgrades = Array[Resource]([ExtResource("10_fire_slash_lv2"), ExtResource("11_fire_slash_explosive_lv3"), ExtResource("12_fire_slash_giant_lv3"), ExtResource("13_fire_slash_explosive_lv4"), ExtResource("14_fire_slash_giant_lv4"), ExtResource("15_fire_slash_explosive_lv5"), ExtResource("16_fire_slash_giant_lv5"), ExtResource("17_lightning_dash_lv2"), ExtResource("18_lightning_dash_chain_lv3"), ExtResource("19_lightning_dash_afterimage_lv3"), ExtResource("20_lightning_dash_chain_lv4"), ExtResource("21_lightning_dash_afterimage_lv4"), ExtResource("22_lightning_dash_chain_lv5"), ExtResource("23_lightning_dash_afterimage_lv5"), ExtResource("24_blade_storm_lv2"), ExtResource("25_blade_storm_pull_lv3"), ExtResource("26_blade_storm_barrage_lv3"), ExtResource("27_blade_storm_pull_lv4"), ExtResource("28_blade_storm_barrage_lv4"), ExtResource("29_blade_storm_pull_lv5"), ExtResource("30_blade_storm_barrage_lv5")])
+effect_root_path = NodePath("../../../../World/EffectRoot")
+
+[node name="SkillCooldownComponent" type="Node" parent="SkillManager"]
+script = ExtResource("6_skill_cooldown")
+
+[node name="UltimateController" type="Node" parent="."]
+script = ExtResource("31_ultimate_controller")
+ultimate_data = ExtResource("32_skyfall_data")
+effect_root_path = NodePath("../../../../World/EffectRoot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -26)
+shape = SubResource("RectangleShape2D_player_body")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -26)
+script = ExtResource("3_hurtbox")
+faction = &"player"
+health_path = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_player_body")
+
+[node name="VisualPivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="PlayerVisual" type="Node2D" parent="VisualPivot"]
+unique_name_in_owner = true
+z_index = 10
+scale = Vector2(1.32, 1.32)
+script = ExtResource("33_player_visual")
+idle_sheet = ExtResource("34_idle")
+run_sheet = ExtResource("35_run")
+jump_start_sheet = ExtResource("41_jump_start")
+jump_loop_sheet = ExtResource("42_jump_loop")
+fall_sheet = ExtResource("43_fall")
+land_sheet = ExtResource("44_land")
+dodge_sheet = ExtResource("45_dodge")
+hurt_sheet = ExtResource("36_hurt")
+death_sheet = ExtResource("37_death")
+attack_1_sheet = ExtResource("38_attack_1")
+slash_sheet = ExtResource("39_slash")
+hit_sheet = ExtResource("40_hit")
+
+[node name="Outline" type="Sprite2D" parent="VisualPivot/PlayerVisual"]
+position = Vector2(0, -48)
+scale = Vector2(1.09, 1.09)
+modulate = Color(0.035, 0.025, 0.07, 0.9)
+z_index = -1
+
+[node name="Body" type="Sprite2D" parent="VisualPivot/PlayerVisual"]
+position = Vector2(0, -48)
+modulate = Color(1.15, 1.12, 1.2, 1)
+
+[node name="ContactShadow" type="Polygon2D" parent="VisualPivot"]
+polygon = PackedVector2Array(-28, -2, -18, -6, 18, -6, 28, -2, 18, 2, -18, 2)
+color = Color(0.015, 0.012, 0.03, 0.55)
+z_index = 4
+
+[node name="Slash" type="Sprite2D" parent="VisualPivot/PlayerVisual"]
+position = Vector2(50, -55)
+
+[node name="Hit" type="Sprite2D" parent="VisualPivot/PlayerVisual"]
+position = Vector2(82, -48)
+[node name="DodgeAfterimage" type="ColorRect" parent="VisualPivot"]
+unique_name_in_owner = true
+visible = false
+offset_left = -20.0
+offset_top = -56.0
+offset_right = 20.0
+offset_bottom = 4.0
+color = Color(0.45, 0.8, 1, 0.38)
+[node name="Body" type="ColorRect" parent="VisualPivot"]
+visible = false
+offset_left = -15.0
+offset_top = -64.0
+offset_right = 15.0
+offset_bottom = 0.0
+color = Color(0.17, 0.46, 0.9, 1)
+
+[node name="HitFlash" type="ColorRect" parent="VisualPivot"]
+unique_name_in_owner = true
+visible = false
+offset_left = -22.0
+offset_top = -68.0
+offset_right = 22.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(1, 0.12, 0.08, 0.88)
+
+[node name="FacingMarker" type="ColorRect" parent="VisualPivot"]
+visible = false
+offset_left = 9.0
+offset_top = -48.0
+offset_right = 21.0
+offset_bottom = -38.0
+color = Color(1, 0.78, 0.28, 1)
+
+[node name="AttackArc" type="ColorRect" parent="VisualPivot"]
+visible = false
+unique_name_in_owner = true
+visible = false
+offset_left = 12.0
+offset_top = -106.0
+offset_right = 128.0
+offset_bottom = -2.0
+color = Color(1, 0.83, 0.28, 0.72)
+
+[node name="AttackHitbox" type="Area2D" parent="VisualPivot"]
+unique_name_in_owner = true
+position = Vector2(70, -54)
+script = ExtResource("4_hitbox")
+faction = &"player"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisualPivot/AttackHitbox"]
+shape = SubResource("RectangleShape2D_attack")
+
+[node name="StateLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -54.0
+offset_top = -86.0
+offset_right = 54.0
+offset_bottom = -62.0
+visible = false
+text = "State: idle"
+horizontal_alignment = 1

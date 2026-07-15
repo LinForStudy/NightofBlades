@@ -1,0 +1,2 @@
+User-provided GPT candidate for nightwatcher_jump_loop.
+Required target: 2-frame horizontal 96x96 sprite strip, right-facing Nightwatcher, airborne loop, magenta source background. Processed locally only; no generated replacement.

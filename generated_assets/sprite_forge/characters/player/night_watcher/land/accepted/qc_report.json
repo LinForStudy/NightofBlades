@@ -1,0 +1,41 @@
+{
+  "input": "generated_assets\\sprite_forge\\characters\\player\\night_watcher\\land\\review\\attempt_001\\sheet-transparent.png",
+  "expected_size": [
+    192,
+    96
+  ],
+  "actual_size": [
+    192,
+    96
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "bbox": [
+        20,
+        32,
+        76,
+        82
+      ],
+      "valid": true,
+      "visible_height": 50,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 1,
+      "bbox": [
+        19,
+        15,
+        76,
+        82
+      ],
+      "valid": true,
+      "visible_height": 67,
+      "feet_y": 81,
+      "touches_edge": false
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

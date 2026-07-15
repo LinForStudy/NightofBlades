@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/upgrade_data.gd" id="1_upgrade_data"]
+
+[resource]
+script = ExtResource("1_upgrade_data")
+upgrade_id = &"iron_body"
+display_name = "强健"
+description = "最大生命+15，并立即恢复同等生命。"
+rarity = &"common"
+max_stacks = 4
+weight = 45
+effect_key = &"max_health_bonus"
+effect_value = 15.0
+tags = Array[StringName]([&"survival"])

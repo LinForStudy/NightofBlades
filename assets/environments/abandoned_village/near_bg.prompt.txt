@@ -1,0 +1,1 @@
+Derived runtime near background: non-colliding rear wall chunks, fog, broken village forms behind player lane; preserves clear readability for actors and platforms.

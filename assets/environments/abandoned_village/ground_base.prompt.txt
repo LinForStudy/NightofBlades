@@ -1,0 +1,1 @@
+Project-native ground skin aligned to existing collision: top visual edge must align with battle_scene ground top y=648; art is visual only and not collision.

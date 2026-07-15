@@ -1,0 +1,489 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/battle_hud.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color = Color(0.035, 0.043, 0.062, 0.82)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.22, 0.29, 0.40, 0.86)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="boss_panel"]
+bg_color = Color(0.10, 0.025, 0.045, 0.84)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.62, 0.12, 0.22, 0.88)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="ultimate_panel"]
+bg_color = Color(0.14, 0.085, 0.015, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.95, 0.65, 0.12, 0.95)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="BattleHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1")
+player_path = NodePath("../../World/EntityRoot/Player")
+boss_path = NodePath("../../World/EntityRoot/RiftColossus")
+experience_manager_path = NodePath("../../Managers/ExperienceManager")
+
+[node name="PlayerStatusPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 226.0
+offset_bottom = 101.0
+theme_override_styles/panel = SubResource("panel")
+[node name="Content" type="HBoxContainer" parent="PlayerStatusPanel"]
+layout_mode = 2
+theme_override_constants/separation = 7
+[node name="Portrait" type="ColorRect" parent="PlayerStatusPanel/Content"]
+custom_minimum_size = Vector2(30, 42)
+layout_mode = 2
+color = Color(0.17, 0.46, 0.90, 1)
+[node name="Stats" type="VBoxContainer" parent="PlayerStatusPanel/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1
+[node name="HealthText" type="Label" parent="PlayerStatusPanel/Content/Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "生命 100 / 100"
+[node name="HealthBar" type="ProgressBar" parent="PlayerStatusPanel/Content/Stats"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+show_percentage = false
+[node name="ShieldBar" type="ProgressBar" parent="PlayerStatusPanel/Content/Stats"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+show_percentage = false
+[node name="LevelRow" type="HBoxContainer" parent="PlayerStatusPanel/Content/Stats"]
+layout_mode = 2
+[node name="LevelLabel" type="Label" parent="PlayerStatusPanel/Content/Stats/LevelRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "等级.1"
+[node name="ExperienceText" type="Label" parent="PlayerStatusPanel/Content/Stats/LevelRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 / 20"
+[node name="ExperienceBar" type="ProgressBar" parent="PlayerStatusPanel/Content/Stats"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+show_percentage = false
+
+[node name="BossStatusPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = 24.0
+offset_right = 180.0
+offset_bottom = 98.0
+theme_override_styles/panel = SubResource("boss_panel")
+[node name="Content" type="VBoxContainer" parent="BossStatusPanel"]
+layout_mode = 2
+theme_override_constants/separation = 1
+[node name="Header" type="HBoxContainer" parent="BossStatusPanel/Content"]
+layout_mode = 2
+[node name="BossNameLabel" type="Label" parent="BossStatusPanel/Content/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "裂隙巨像"
+[node name="PhaseLabel" type="Label" parent="BossStatusPanel/Content/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "阶段 1"
+[node name="BossHealthBar" type="ProgressBar" parent="BossStatusPanel/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+show_percentage = false
+[node name="BossValueLabel" type="Label" parent="BossStatusPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+text = "900 / 900"
+[node name="PoiseText" type="Label" parent="BossStatusPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "韧性 120 / 120"
+horizontal_alignment = 1
+
+[node name="PoiseBar" type="ProgressBar" parent="BossStatusPanel/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+max_value = 120.0
+value = 120.0
+show_percentage = false
+
+[node name="RunInfoPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 97.0
+theme_override_styles/panel = SubResource("panel")
+[node name="Content" type="VBoxContainer" parent="RunInfoPanel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+[node name="TimerLabel" type="Label" parent="RunInfoPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "时间 00:00"
+[node name="KillLabel" type="Label" parent="RunInfoPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "击杀 0"
+[node name="ComboLabel" type="Label" parent="RunInfoPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "连击 0"
+[node name="DangerLabel" type="Label" parent="RunInfoPanel/Content"]
+layout_mode = 2
+text = "危险 I"
+
+[node name="SkillBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -88.0
+offset_right = 190.0
+offset_bottom = -16.0
+theme_override_constants/separation = 8
+[node name="SkillSlot1" type="PanelContainer" parent="SkillBar"]
+custom_minimum_size = Vector2(82, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("panel")
+[node name="Content" type="Control" parent="SkillBar/SkillSlot1"]
+layout_mode = 2
+[node name="Icon" type="ColorRect" parent="SkillBar/SkillSlot1/Content"]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 33.0
+offset_bottom = 33.0
+color = Color(0.75, 0.24, 0.18, 1)
+[node name="Key" type="Label" parent="SkillBar/SkillSlot1/Content"]
+offset_left = 42.0
+offset_top = 6.0
+offset_right = 76.0
+offset_bottom = 25.0
+text = "[U]"
+[node name="Level" type="Label" parent="SkillBar/SkillSlot1/Content"]
+offset_left = 7.0
+offset_top = 38.0
+offset_right = 44.0
+offset_bottom = 56.0
+text = "等级.1"
+[node name="CooldownText" type="Label" parent="SkillBar/SkillSlot1/Content"]
+offset_left = 45.0
+offset_top = 38.0
+offset_right = 78.0
+offset_bottom = 56.0
+text = "就绪"
+horizontal_alignment = 2
+[node name="Cooldown" type="ProgressBar" parent="SkillBar/SkillSlot1/Content"]
+offset_left = 7.0
+offset_top = 60.0
+offset_right = 75.0
+offset_bottom = 66.0
+show_percentage = false
+[node name="SkillSlot2" type="PanelContainer" parent="SkillBar"]
+custom_minimum_size = Vector2(82, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("panel")
+[node name="Content" type="Control" parent="SkillBar/SkillSlot2"]
+layout_mode = 2
+[node name="Icon" type="ColorRect" parent="SkillBar/SkillSlot2/Content"]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 33.0
+offset_bottom = 33.0
+color = Color(0.22, 0.55, 0.92, 1)
+[node name="Key" type="Label" parent="SkillBar/SkillSlot2/Content"]
+offset_left = 42.0
+offset_top = 6.0
+offset_right = 76.0
+offset_bottom = 25.0
+text = "[I]"
+[node name="Level" type="Label" parent="SkillBar/SkillSlot2/Content"]
+offset_left = 7.0
+offset_top = 38.0
+offset_right = 44.0
+offset_bottom = 56.0
+text = "等级.1"
+[node name="CooldownText" type="Label" parent="SkillBar/SkillSlot2/Content"]
+offset_left = 45.0
+offset_top = 38.0
+offset_right = 78.0
+offset_bottom = 56.0
+text = "就绪"
+horizontal_alignment = 2
+[node name="Cooldown" type="ProgressBar" parent="SkillBar/SkillSlot2/Content"]
+offset_left = 7.0
+offset_top = 60.0
+offset_right = 75.0
+offset_bottom = 66.0
+show_percentage = false
+[node name="SkillSlot3" type="PanelContainer" parent="SkillBar"]
+custom_minimum_size = Vector2(82, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("panel")
+[node name="Content" type="Control" parent="SkillBar/SkillSlot3"]
+layout_mode = 2
+[node name="Icon" type="ColorRect" parent="SkillBar/SkillSlot3/Content"]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 33.0
+offset_bottom = 33.0
+color = Color(0.35, 0.74, 0.47, 1)
+[node name="Key" type="Label" parent="SkillBar/SkillSlot3/Content"]
+offset_left = 42.0
+offset_top = 6.0
+offset_right = 76.0
+offset_bottom = 25.0
+text = "[O]"
+[node name="Level" type="Label" parent="SkillBar/SkillSlot3/Content"]
+offset_left = 7.0
+offset_top = 38.0
+offset_right = 44.0
+offset_bottom = 56.0
+text = "等级.1"
+[node name="CooldownText" type="Label" parent="SkillBar/SkillSlot3/Content"]
+offset_left = 45.0
+offset_top = 38.0
+offset_right = 78.0
+offset_bottom = 56.0
+text = "就绪"
+horizontal_alignment = 2
+[node name="Cooldown" type="ProgressBar" parent="SkillBar/SkillSlot3/Content"]
+offset_left = 7.0
+offset_top = 60.0
+offset_right = 75.0
+offset_bottom = 66.0
+show_percentage = false
+[node name="UltimateSlot" type="PanelContainer" parent="SkillBar"]
+custom_minimum_size = Vector2(104, 72)
+layout_mode = 2
+theme_override_styles/panel = SubResource("ultimate_panel")
+[node name="Content" type="Control" parent="SkillBar/UltimateSlot"]
+layout_mode = 2
+[node name="Icon" type="ColorRect" parent="SkillBar/UltimateSlot/Content"]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 37.0
+offset_bottom = 37.0
+color = Color(0.92, 0.64, 0.12, 1)
+[node name="Key" type="Label" parent="SkillBar/UltimateSlot/Content"]
+offset_left = 45.0
+offset_top = 7.0
+offset_right = 97.0
+offset_bottom = 26.0
+text = "[L]"
+[node name="UltimateText" type="Label" parent="SkillBar/UltimateSlot/Content"]
+unique_name_in_owner = true
+offset_left = 7.0
+offset_top = 43.0
+offset_right = 97.0
+offset_bottom = 58.0
+text = "0%"
+horizontal_alignment = 1
+[node name="UltimateEnergyBar" type="ProgressBar" parent="SkillBar/UltimateSlot/Content"]
+unique_name_in_owner = true
+offset_left = 7.0
+offset_top = 61.0
+offset_right = 97.0
+offset_bottom = 67.0
+show_percentage = false
+
+[node name="AnnouncementLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 94.0
+offset_right = 160.0
+offset_bottom = 116.0
+[node name="AnnouncementLabel" type="Label" parent="AnnouncementLayer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_alignment = 1
+text = ""
+
+[node name="DefeatPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -96.0
+offset_right = 160.0
+offset_bottom = 96.0
+theme_override_styles/panel = SubResource("boss_panel")
+
+[node name="Content" type="VBoxContainer" parent="DefeatPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="DefeatPanel/Content"]
+layout_mode = 2
+text = "战斗失败"
+horizontal_alignment = 1
+
+[node name="DefeatStatsLabel" type="Label" parent="DefeatPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "本局 00:00  击杀 0"
+horizontal_alignment = 1
+
+[node name="DefeatRestartButton" type="Button" parent="DefeatPanel/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "重新开始"
+
+[node name="DefeatMenuButton" type="Button" parent="DefeatPanel/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "返回主菜单"
+
+[node name="VictoryPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -96.0
+offset_right = 160.0
+offset_bottom = 96.0
+theme_override_styles/panel = SubResource("ultimate_panel")
+
+[node name="Content" type="VBoxContainer" parent="VictoryPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="VictoryPanel/Content"]
+layout_mode = 2
+text = "战斗胜利"
+horizontal_alignment = 1
+
+[node name="VictoryStatsLabel" type="Label" parent="VictoryPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "本局 00:00  击杀 0"
+horizontal_alignment = 1
+
+[node name="VictoryRestartButton" type="Button" parent="VictoryPanel/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "重新开始"
+
+[node name="VictoryMenuButton" type="Button" parent="VictoryPanel/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "返回主菜单"
+[node name="PausePanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -96.0
+offset_right = 130.0
+offset_bottom = 96.0
+theme_override_styles/panel = SubResource("panel")
+[node name="Content" type="VBoxContainer" parent="PausePanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+[node name="Title" type="Label" parent="PausePanel/Content"]
+layout_mode = 2
+text = "已暂停"
+horizontal_alignment = 1
+[node name="ResumeButton" type="Button" parent="PausePanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "继续"
+[node name="RestartButton" type="Button" parent="PausePanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "重新开始"
+[node name="PauseMenuButton" type="Button" parent="PausePanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "返回主菜单"
+
+[node name="DebugOverlay" type="PanelContainer" parent="."]unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = 24.0
+offset_top = 112.0
+offset_right = 264.0
+offset_bottom = 245.0
+theme_override_styles/panel = SubResource("panel")
+[node name="DebugText" type="Label" parent="DebugOverlay"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "调试"

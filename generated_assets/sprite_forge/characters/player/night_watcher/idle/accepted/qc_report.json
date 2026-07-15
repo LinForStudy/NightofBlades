@@ -1,0 +1,67 @@
+{
+  "input": "generated_assets\\sprite_forge\\characters\\player\\night_watcher\\idle\\review\\attempt_002\\sheet-transparent.png",
+  "expected_size": [
+    384,
+    96
+  ],
+  "actual_size": [
+    384,
+    96
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "bbox": [
+        21,
+        15,
+        74,
+        82
+      ],
+      "valid": true,
+      "visible_height": 67,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 1,
+      "bbox": [
+        23,
+        15,
+        73,
+        82
+      ],
+      "valid": true,
+      "visible_height": 67,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 2,
+      "bbox": [
+        22,
+        15,
+        74,
+        82
+      ],
+      "valid": true,
+      "visible_height": 67,
+      "feet_y": 81,
+      "touches_edge": false
+    },
+    {
+      "index": 3,
+      "bbox": [
+        22,
+        15,
+        74,
+        82
+      ],
+      "valid": true,
+      "visible_height": 67,
+      "feet_y": 81,
+      "touches_edge": false
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

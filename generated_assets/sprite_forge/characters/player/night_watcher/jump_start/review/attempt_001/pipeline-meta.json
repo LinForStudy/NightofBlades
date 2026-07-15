@@ -1,0 +1,177 @@
+{
+  "target": "player",
+  "mode": "jump_start",
+  "prompt": "",
+  "role": "",
+  "input": "generated_assets\\sprite_forge\\characters\\player\\night_watcher\\jump_start\\review\\attempt_001\\nightwatcher_jump_start_raw.png",
+  "threshold": 100,
+  "edge_threshold": 150,
+  "duration": 200,
+  "rows": 1,
+  "cols": 2,
+  "cell_size": 96,
+  "fit_scale": 0.7,
+  "trim_border": 4,
+  "edge_clean_depth": 3,
+  "align": "center",
+  "shared_scale": true,
+  "scale_strategy": "fit",
+  "component_mode": "largest",
+  "component_padding": 0,
+  "min_component_area": 1,
+  "edge_touch_margin": 0,
+  "frame_labels": [
+    "jump_start-1",
+    "jump_start-2"
+  ],
+  "frames": [
+    {
+      "grid": [
+        0,
+        0
+      ],
+      "source_box": [
+        0,
+        0,
+        887,
+        887
+      ],
+      "component_mode": "largest",
+      "component_count": 3,
+      "selected_component_area": 69851,
+      "selected_component_bbox": [
+        251,
+        316,
+        657,
+        673
+      ],
+      "crop_bbox": [
+        251,
+        316,
+        657,
+        673
+      ],
+      "source_frame_size": [
+        879,
+        879
+      ],
+      "is_empty": false,
+      "subject_area": 69851,
+      "body_core_area": 69895,
+      "body_area_fraction": 0.09046245280796644,
+      "anchor_source": [
+        454.0,
+        494.5
+      ],
+      "source_edge_touch": false,
+      "output_edge_touch": false,
+      "edge_touch": false,
+      "output_size": [
+        57,
+        50
+      ],
+      "paste_position": [
+        19,
+        23
+      ],
+      "paste_clamped": false,
+      "aligned_bbox": [
+        19,
+        23,
+        76,
+        73
+      ],
+      "source_to_output_scale": 0.1423728813559322,
+      "bbox_scale_applied": true,
+      "scale_strategy": "fit",
+      "scale_changed": true
+    },
+    {
+      "grid": [
+        0,
+        1
+      ],
+      "source_box": [
+        887,
+        0,
+        1774,
+        887
+      ],
+      "component_mode": "largest",
+      "component_count": 2,
+      "selected_component_area": 75981,
+      "selected_component_bbox": [
+        143,
+        174,
+        544,
+        646
+      ],
+      "crop_bbox": [
+        143,
+        174,
+        544,
+        646
+      ],
+      "source_frame_size": [
+        879,
+        879
+      ],
+      "is_empty": false,
+      "subject_area": 75981,
+      "body_core_area": 70106,
+      "body_area_fraction": 0.09073554212111447,
+      "anchor_source": [
+        343.5,
+        410.0
+      ],
+      "source_edge_touch": false,
+      "output_edge_touch": false,
+      "edge_touch": false,
+      "output_size": [
+        57,
+        67
+      ],
+      "paste_position": [
+        19,
+        14
+      ],
+      "paste_clamped": false,
+      "aligned_bbox": [
+        19,
+        14,
+        76,
+        81
+      ],
+      "source_to_output_scale": 0.1423728813559322,
+      "bbox_scale_applied": true,
+      "scale_strategy": "fit",
+      "scale_changed": true
+    }
+  ],
+  "edge_touch_frames": [],
+  "source_edge_touch_frames": [],
+  "output_edge_touch_frames": [],
+  "empty_frames": [],
+  "paste_clamped_frames": [],
+  "qc_summary": {
+    "frame_count": 2,
+    "valid_frame_count": 2,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.30099658804844076,
+    "output_subject_height_mean": 58.5,
+    "body_scale_cv": 0.0007535664738786672,
+    "anchor_x_std": 0.06285551763367461,
+    "anchor_y_std": 0.04806598407280998,
+    "anchor_y_mean": 0.514505119453925
+  },
+  "qc_config": {
+    "strict_qc": true,
+    "reject_edge_touch": false,
+    "allow_source_edge_touch": false,
+    "max_body_scale_cv": null,
+    "max_anchor_y_std": null,
+    "max_profile_scale_drift": null
+  }
+}

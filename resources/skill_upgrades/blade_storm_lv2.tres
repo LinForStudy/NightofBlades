@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillUpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_upgrade_data.gd" id="1_upgrade_data"]
+
+[resource]
+script = ExtResource("1_upgrade_data")
+upgrade_id = &"blade_storm_lv2"
+skill_id = &"blade_storm"
+target_level = 2
+display_name = "blade_storm_lv2"
+description = "Skill evolution upgrade."
+rarity = &"rare"
+weight = 8
+modifiers = {"range_bonus": 0.2, "duration_bonus": 0.25}

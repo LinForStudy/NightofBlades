@@ -1,0 +1,382 @@
+{
+    "version":  1,
+    "batch":  "Batch B",
+    "generation_policy":  {
+                              "health_check":  "one_minimal_check_before_formal_generation",
+                              "max_retries":  2,
+                              "retry_delays_seconds":  [
+                                                           15,
+                                                           45
+                                                       ],
+                              "stop_after_final_network_failure":  true
+                          },
+    "assets":  [
+                   {
+                       "asset_id":  "nightwatcher_idle",
+                       "action":  "idle",
+                       "frame_count":  4,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x4",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  true,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_idle.prompt.txt",
+                       "generation_status":  "accepted",
+                       "qc_status":  "passed",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/idle/accepted/nightwatcher_idle_raw.png",
+                                            "transparent":  "characters/player/night_watcher/idle/accepted/nightwatcher_idle_transparent.png",
+                                            "frames":  "characters/player/night_watcher/idle/accepted/frames",
+                                            "gif":  "characters/player/night_watcher/idle/accepted/nightwatcher_idle_preview.gif",
+                                            "qc_report":  "characters/player/night_watcher/idle/accepted/qc_report.json"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_run",
+                       "action":  "run",
+                       "frame_count":  8,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x8",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  true,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_run.prompt.txt",
+                       "generation_status":  "accepted",
+                       "qc_status":  "passed",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/run/accepted/nightwatcher_run_raw.png",
+                                            "transparent":  "characters/player/night_watcher/run/accepted/nightwatcher_run_transparent.png",
+                                            "frames":  "characters/player/night_watcher/run/accepted/frames",
+                                            "gif":  "characters/player/night_watcher/run/accepted/nightwatcher_run_preview.gif",
+                                            "qc_report":  "characters/player/night_watcher/run/accepted/qc_report.json"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_jump_start",
+                       "action":  "jump_start",
+                       "frame_count":  2,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x2",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  false,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_jump_start.prompt.txt",
+                       "generation_status":  "accepted",
+                       "qc_status":  "passed",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/jump_start/accepted/nightwatcher_jump_start_raw.png",
+                                            "transparent":  "characters/player/night_watcher/jump_start/accepted/nightwatcher_jump_start_transparent.png",
+                                            "frames":  "characters/player/night_watcher/jump_start/accepted/frames",
+                                            "gif":  "characters/player/night_watcher/jump_start/accepted/nightwatcher_jump_start_preview.gif",
+                                            "qc_report":  "characters/player/night_watcher/jump_start/accepted/qc_report.json"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_jump_loop",
+                       "action":  "jump_loop",
+                       "frame_count":  2,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x2",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  false,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_jump_loop.prompt.txt",
+                       "generation_status":  "accepted",
+                       "qc_status":  "passed",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/jump_loop/accepted/nightwatcher_jump_loop_raw.png",
+                                            "transparent":  "characters/player/night_watcher/jump_loop/accepted/nightwatcher_jump_loop_transparent.png",
+                                            "frames":  "characters/player/night_watcher/jump_loop/accepted/frames",
+                                            "gif":  "characters/player/night_watcher/jump_loop/accepted/nightwatcher_jump_loop_preview.gif",
+                                            "qc_report":  "characters/player/night_watcher/jump_loop/accepted/qc_report.json"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_fall",
+                       "action":  "fall",
+                       "frame_count":  2,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x2",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  false,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_fall.prompt.txt",
+                       "generation_status":  "accepted",
+                       "qc_status":  "passed",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/fall/accepted/nightwatcher_fall_raw.png",
+                                            "transparent":  "characters/player/night_watcher/fall/accepted/nightwatcher_fall_transparent.png",
+                                            "frames":  "characters/player/night_watcher/fall/accepted/frames",
+                                            "gif":  "characters/player/night_watcher/fall/accepted/nightwatcher_fall_preview.gif",
+                                            "qc_report":  "characters/player/night_watcher/fall/accepted/qc_report.json"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_land",
+                       "action":  "land",
+                       "frame_count":  2,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x2",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  true,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_land.prompt.txt",
+                       "generation_status":  "accepted",
+                       "qc_status":  "passed",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/land/accepted/nightwatcher_land_raw.png",
+                                            "transparent":  "characters/player/night_watcher/land/accepted/nightwatcher_land_transparent.png",
+                                            "frames":  "characters/player/night_watcher/land/accepted/frames",
+                                            "gif":  "characters/player/night_watcher/land/accepted/nightwatcher_land_preview.gif",
+                                            "qc_report":  "characters/player/night_watcher/land/accepted/qc_report.json"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_dodge",
+                       "action":  "dodge",
+                       "frame_count":  6,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x6",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  true,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_dodge.prompt.txt",
+                       "generation_status":  "accepted",
+                       "qc_status":  "passed",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/dodge/accepted/nightwatcher_dodge_raw.png",
+                                            "transparent":  "characters/player/night_watcher/dodge/accepted/nightwatcher_dodge_transparent.png",
+                                            "frames":  "characters/player/night_watcher/dodge/accepted/frames",
+                                            "gif":  "characters/player/night_watcher/dodge/accepted/nightwatcher_dodge_preview.gif",
+                                            "qc_report":  "characters/player/night_watcher/dodge/accepted/qc_report.json"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_hurt",
+                       "action":  "hurt",
+                       "frame_count":  3,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x3",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  true,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_hurt.prompt.txt",
+                       "generation_status":  "accepted",
+                       "qc_status":  "passed",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/hurt/nightwatcher_hurt_raw.png",
+                                            "transparent":  "characters/player/night_watcher/hurt/nightwatcher_hurt_transparent.png",
+                                            "frames":  "characters/player/night_watcher/hurt/frames",
+                                            "gif":  "characters/player/night_watcher/hurt/accepted/nightwatcher_hurt_preview.gif"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_death",
+                       "action":  "death",
+                       "frame_count":  8,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x8",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  false,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_death.prompt.txt",
+                       "generation_status":  "accepted",
+                       "qc_status":  "passed",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/death/nightwatcher_death_raw.png",
+                                            "transparent":  "characters/player/night_watcher/death/nightwatcher_death_transparent.png",
+                                            "frames":  "characters/player/night_watcher/death/frames",
+                                            "gif":  "characters/player/night_watcher/death/accepted/nightwatcher_death_preview.gif"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_attack_1",
+                       "action":  "attack_1",
+                       "frame_count":  6,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x6",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  true,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_attack_1.prompt.txt",
+                       "generation_status":  "blocked_by_idle",
+                       "qc_status":  "not_started",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/attack_1/nightwatcher_attack_1_raw.png",
+                                            "transparent":  "characters/player/night_watcher/attack_1/nightwatcher_attack_1_transparent.png",
+                                            "frames":  "characters/player/night_watcher/attack_1/frames",
+                                            "gif":  "previews/nightwatcher_attack_1.gif"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_attack_2",
+                       "action":  "attack_2",
+                       "frame_count":  7,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x7",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  true,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_attack_2.prompt.txt",
+                       "generation_status":  "blocked_by_idle",
+                       "qc_status":  "not_started",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/attack_2/nightwatcher_attack_2_raw.png",
+                                            "transparent":  "characters/player/night_watcher/attack_2/nightwatcher_attack_2_transparent.png",
+                                            "frames":  "characters/player/night_watcher/attack_2/frames",
+                                            "gif":  "previews/nightwatcher_attack_2.gif"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_attack_3",
+                       "action":  "attack_3",
+                       "frame_count":  8,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x8",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  true,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_attack_3.prompt.txt",
+                       "generation_status":  "blocked_by_idle",
+                       "qc_status":  "not_started",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/attack_3/nightwatcher_attack_3_raw.png",
+                                            "transparent":  "characters/player/night_watcher/attack_3/nightwatcher_attack_3_transparent.png",
+                                            "frames":  "characters/player/night_watcher/attack_3/frames",
+                                            "gif":  "previews/nightwatcher_attack_3.gif"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_air_attack",
+                       "action":  "air_attack",
+                       "frame_count":  6,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x6",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  false,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_air_attack.prompt.txt",
+                       "generation_status":  "blocked_by_idle",
+                       "qc_status":  "not_started",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/air_attack/nightwatcher_air_attack_raw.png",
+                                            "transparent":  "characters/player/night_watcher/air_attack/nightwatcher_air_attack_transparent.png",
+                                            "frames":  "characters/player/night_watcher/air_attack/frames",
+                                            "gif":  "previews/nightwatcher_air_attack.gif"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_charge_start",
+                       "action":  "charge_start",
+                       "frame_count":  5,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x5",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  true,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_charge_start.prompt.txt",
+                       "generation_status":  "blocked_by_idle",
+                       "qc_status":  "not_started",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/charge_start/nightwatcher_charge_start_raw.png",
+                                            "transparent":  "characters/player/night_watcher/charge_start/nightwatcher_charge_start_transparent.png",
+                                            "frames":  "characters/player/night_watcher/charge_start/frames",
+                                            "gif":  "previews/nightwatcher_charge_start.gif"
+                                        }
+                   },
+                   {
+                       "asset_id":  "nightwatcher_charge_release",
+                       "action":  "charge_release",
+                       "frame_count":  7,
+                       "frame_width":  96,
+                       "frame_height":  96,
+                       "layout":  "strip_1x7",
+                       "feet_anchor":  {
+                                           "y":  82,
+                                           "required":  true,
+                                           "x":  48
+                                       },
+                       "reference_asset":  "characters/player/night_watcher/style_lock/style_lock-1.png",
+                       "prompt_file":  "prompts/nightwatcher_charge_release.prompt.txt",
+                       "generation_status":  "blocked_by_idle",
+                       "qc_status":  "not_started",
+                       "retry_count":  0,
+                       "output_paths":  {
+                                            "raw":  "characters/player/night_watcher/charge_release/nightwatcher_charge_release_raw.png",
+                                            "transparent":  "characters/player/night_watcher/charge_release/nightwatcher_charge_release_transparent.png",
+                                            "frames":  "characters/player/night_watcher/charge_release/frames",
+                                            "gif":  "previews/nightwatcher_charge_release.gif"
+                                        }
+                   }
+               ]
+}

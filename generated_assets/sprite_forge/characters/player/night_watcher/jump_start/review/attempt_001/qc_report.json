@@ -1,0 +1,41 @@
+{
+  "input": "generated_assets\\sprite_forge\\characters\\player\\night_watcher\\jump_start\\review\\attempt_001\\sheet-transparent.png",
+  "expected_size": [
+    192,
+    96
+  ],
+  "actual_size": [
+    192,
+    96
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "bbox": [
+        19,
+        23,
+        76,
+        73
+      ],
+      "valid": true,
+      "visible_height": 50,
+      "feet_y": 72,
+      "touches_edge": false
+    },
+    {
+      "index": 1,
+      "bbox": [
+        19,
+        14,
+        76,
+        81
+      ],
+      "valid": true,
+      "visible_height": 67,
+      "feet_y": 80,
+      "touches_edge": false
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

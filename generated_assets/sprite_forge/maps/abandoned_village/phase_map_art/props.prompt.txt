@@ -1,0 +1,1 @@
+Compact transparent village props: wood crate, broken fence, rift lamp, rubble pile, straw pile, torn banner; low occlusion and not collision source.

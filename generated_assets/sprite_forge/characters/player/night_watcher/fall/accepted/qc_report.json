@@ -1,0 +1,41 @@
+{
+  "input": "generated_assets\\sprite_forge\\characters\\player\\night_watcher\\fall\\review\\attempt_001\\sheet-transparent.png",
+  "expected_size": [
+    192,
+    96
+  ],
+  "actual_size": [
+    192,
+    96
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "bbox": [
+        21,
+        15,
+        74,
+        81
+      ],
+      "valid": true,
+      "visible_height": 66,
+      "feet_y": 80,
+      "touches_edge": false
+    },
+    {
+      "index": 1,
+      "bbox": [
+        21,
+        14,
+        75,
+        81
+      ],
+      "valid": true,
+      "visible_height": 67,
+      "feet_y": 80,
+      "touches_edge": false
+    }
+  ],
+  "passed": true,
+  "errors": []
+}

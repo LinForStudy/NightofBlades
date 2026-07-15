@@ -1,0 +1,1 @@
+In-world stage reference mockup for the abandoned village side-scroll stage. It visualizes runtime object placement over the generated/derived scenery stack. This is a planning and QA artifact, not the runtime background or collision source.

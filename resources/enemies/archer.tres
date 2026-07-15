@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1_enemy_data"]
+
+[resource]
+script = ExtResource("1_enemy_data")
+enemy_id = &"archer"
+display_name = "弓箭手"
+max_health = 28.0
+move_speed = 55.0
+base_damage = 10.0
+attack_range = 360.0
+preferred_range = 300.0
+attack_interval = 2.0
+aim_time = 0.6
+experience_value = 9
+tags = Array[StringName]([&"ranged"])

@@ -1,0 +1,177 @@
+{
+    "version":  1,
+    "generator":  "agent-sprite-forge",
+    "assets":  [
+                   {
+                       "logical_height":  64,
+                       "status":  "review",
+                       "path":  "characters/player/night_watcher/style_lock",
+                       "id":  "player_night_watcher_style_lock",
+                       "kind":  "sprite"
+                   },
+                   {
+                       "logical_height":  48,
+                       "status":  "review",
+                       "path":  "enemies/rift_grunt/style_lock",
+                       "id":  "enemy_rift_grunt_style_lock",
+                       "kind":  "sprite"
+                   },
+                   {
+                       "logical_height":  192,
+                       "status":  "style_reference_only",
+                       "path":  "bosses/rift_colossus/style_lock",
+                       "id":  "boss_rift_colossus_style_lock",
+                       "kind":  "sprite",
+                       "native_processed_height_px":  89,
+                       "replacement_requirement":  "Regenerate 160-192px native body height before any Boss animation or runtime integration; target same-screen ratio 2.7-3.2x player."
+                   },
+                   {
+                       "id":  "map_abandoned_village_far_bg_style_lock",
+                       "stage_canvas":  "1672x940",
+                       "path":  "maps/abandoned_village/style_lock/far_bg_raw.png",
+                       "kind":  "map_layer",
+                       "role":  "far_bg_scenery_only",
+                       "status":  "review"
+                   },
+                   {
+                       "id":  "player_night_watcher_hurt",
+                       "kind":  "sprite_animation",
+                       "status":  "accepted",
+                       "path":  "characters/player/night_watcher/hurt/accepted",
+                       "logical_height":  64,
+                       "frame_count":  3,
+                       "frame_size":  "96x96",
+                       "playback":  "once",
+                       "feet_anchor":  {
+                                           "x":  48,
+                                           "y":  81
+                                       }
+                   },
+                   {
+                       "id":  "player_night_watcher_death",
+                       "kind":  "sprite_animation",
+                       "status":  "accepted",
+                       "path":  "characters/player/night_watcher/death/accepted",
+                       "logical_height":  64,
+                       "frame_count":  8,
+                       "frame_size":  "96x96",
+                       "playback":  "once",
+                       "feet_anchor":  {
+                                           "x":  48,
+                                           "y":  81
+                                       },
+                       "raw_layout":  "2x4_generation_grid_to_1x8_delivery_strip"
+                   },
+                   {
+                       "id":  "map_abandoned_village_phase_art_sky_far",
+                       "kind":  "map_layer",
+                       "role":  "sky_far_scenery_only",
+                       "status":  "accepted",
+                       "stage_canvas":  "1280x720",
+                       "stage_segment_count":  2,
+                       "path":  "environments/abandoned_village/sky_far.png",
+                       "game_path":  "res://assets/environments/abandoned_village/sky_far.png",
+                       "source":  "existing_style_lock_plus_local_integration",
+                       "notes":  "Scenery-only parallax layer; no collision or runtime objects baked in."
+                   },
+                   {
+                       "id":  "map_abandoned_village_phase_art_far_bg",
+                       "kind":  "map_layer",
+                       "role":  "far_bg_scenery_only",
+                       "status":  "accepted",
+                       "stage_canvas":  "1280x720",
+                       "stage_segment_count":  2,
+                       "path":  "environments/abandoned_village/far_bg.png",
+                       "game_path":  "res://assets/environments/abandoned_village/far_bg.png",
+                       "source":  "existing_style_lock_plus_local_integration",
+                       "notes":  "Derived from previous generated far background style lock and normalized to two 1280x720 segments."
+                   },
+                   {
+                       "id":  "map_abandoned_village_phase_art_mid_bg",
+                       "kind":  "map_layer",
+                       "role":  "mid_bg_scenery_only",
+                       "status":  "accepted",
+                       "stage_canvas":  "1280x720",
+                       "stage_segment_count":  2,
+                       "path":  "environments/abandoned_village/mid_bg.png",
+                       "game_path":  "res://assets/environments/abandoned_village/mid_bg.png",
+                       "source":  "local_integration",
+                       "notes":  "Distant village silhouettes only; not a collision source."
+                   },
+                   {
+                       "id":  "map_abandoned_village_phase_art_near_bg",
+                       "kind":  "map_layer",
+                       "role":  "near_bg_scenery_only",
+                       "status":  "accepted",
+                       "stage_canvas":  "1280x720",
+                       "stage_segment_count":  2,
+                       "path":  "environments/abandoned_village/near_bg.png",
+                       "game_path":  "res://assets/environments/abandoned_village/near_bg.png",
+                       "source":  "local_integration",
+                       "notes":  "Rear wall and fog layer behind gameplay lane; not a collision source."
+                   },
+                   {
+                       "id":  "map_abandoned_village_ground_base",
+                       "kind":  "platform_visual",
+                       "role":  "ground_visual_skin",
+                       "status":  "accepted",
+                       "path":  "environments/abandoned_village/ground_base.png",
+                       "game_path":  "res://assets/environments/abandoned_village/ground_base.png",
+                       "size":  "2720x72",
+                       "source":  "local_integration",
+                       "notes":  "Visual top edge aligns with existing ground collision top y=648."
+                   },
+                   {
+                       "id":  "map_abandoned_village_platform_strip_1x3",
+                       "kind":  "platform_visual",
+                       "role":  "platform_strip_1x3",
+                       "status":  "accepted",
+                       "path":  "environments/abandoned_village/platform_strip_1x3.png",
+                       "game_path":  "res://assets/environments/abandoned_village/platform_strip_1x3.png",
+                       "grid":  "1x3",
+                       "cell_size":  "96x28",
+                       "source":  "local_integration",
+                       "notes":  "Visual skin for existing one-way platform StaticBody2D nodes."
+                   },
+                   {
+                       "id":  "map_abandoned_village_compact_props",
+                       "kind":  "prop_set",
+                       "role":  "low_occlusion_props",
+                       "status":  "accepted",
+                       "path":  "environments/abandoned_village/props",
+                       "game_path":  "res://assets/environments/abandoned_village/props/",
+                       "source":  "local_integration",
+                       "notes":  "wood_crate, broken_fence, rift_lamp, rubble_pile, straw_pile, torn_banner; decorative visual props only."
+                   },
+                   {
+                       "id":  "map_abandoned_village_foreground_overlay",
+                       "kind":  "map_layer",
+                       "role":  "foreground_overlay_nonblocking",
+                       "status":  "accepted",
+                       "path":  "environments/abandoned_village/foreground_overlay.png",
+                       "game_path":  "res://assets/environments/abandoned_village/foreground_overlay.png",
+                       "source":  "local_integration",
+                       "notes":  "Subtle fog/beam overlay; no blocking gameplay objects."
+                   },
+                   {
+                       "id":  "map_abandoned_village_stage_preview",
+                       "kind":  "map_preview",
+                       "role":  "qa_preview",
+                       "status":  "accepted",
+                       "path":  "environments/abandoned_village/stage_preview.png",
+                       "game_path":  "res://assets/environments/abandoned_village/stage_preview.png",
+                       "source":  "local_integration",
+                       "notes":  "Flattened QA preview only; runtime scene uses separate layers and existing collision."
+                   },
+                   {
+                       "id":  "map_abandoned_village_stage_reference",
+                       "kind":  "map_reference",
+                       "role":  "stage_reference_qa_only",
+                       "status":  "accepted",
+                       "path":  "environments/abandoned_village/stage_reference.png",
+                       "game_path":  "res://assets/environments/abandoned_village/stage_reference.png",
+                       "source":  "local_integration",
+                       "notes":  "Reference mockup only; runtime scene uses separated parallax layers, platform strip, props, and existing collision."
+                   }
+               ]
+}

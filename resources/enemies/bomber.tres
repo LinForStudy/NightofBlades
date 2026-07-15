@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1_enemy_data"]
+
+[resource]
+script = ExtResource("1_enemy_data")
+enemy_id = &"bomber"
+display_name = "自爆怪"
+max_health = 25.0
+move_speed = 95.0
+base_damage = 25.0
+attack_range = 90.0
+preferred_range = 90.0
+attack_interval = 3.0
+aim_time = 1.0
+experience_value = 10
+tags = Array[StringName]([&"bomber"])

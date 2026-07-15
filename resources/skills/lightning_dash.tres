@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_data.gd" id="1_skill_data"]
+[ext_resource type="PackedScene" path="res://scenes/skills/lightning_dash.tscn" id="2_skill_scene"]
+
+[resource]
+script = ExtResource("1_skill_data")
+skill_id = &"lightning_dash"
+display_name = "雷影冲刺"
+description = "向前突进并伤害路径上的敌人。"
+skill_scene = ExtResource("2_skill_scene")
+base_cooldown = 7.0
+base_damage = 25.0
+duration = 0.18
+range = 180.0
+tags = Array[StringName]([&"lightning", &"dash"])

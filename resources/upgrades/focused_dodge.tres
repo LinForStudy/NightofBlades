@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/upgrade_data.gd" id="1_upgrade_data"]
+
+[resource]
+script = ExtResource("1_upgrade_data")
+upgrade_id = &"focused_dodge"
+display_name = "轻身"
+description = "闪避冷却-0.08秒。"
+rarity = &"rare"
+max_stacks = 4
+weight = 30
+effect_key = &"dodge_cooldown_reduction"
+effect_value = 0.08
+tags = Array[StringName]([&"action"])

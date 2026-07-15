@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/upgrade_data.gd" id="1_upgrade_data"]
+
+[resource]
+script = ExtResource("1_upgrade_data")
+upgrade_id = &"sharp_blade"
+display_name = "锋利"
+description = "普通攻击伤害+10%。"
+rarity = &"common"
+max_stacks = 5
+weight = 60
+effect_key = &"attack_damage_multiplier"
+effect_value = 0.10
+tags = Array[StringName]([&"attack"])

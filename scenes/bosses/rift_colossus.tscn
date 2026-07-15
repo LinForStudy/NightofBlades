@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/bosses/rift_colossus_controller.gd" id="1_boss"]
+[ext_resource type="Script" path="res://scripts/combat/health_component.gd" id="2_health"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox_component.gd" id="3_hurtbox"]
+[ext_resource type="Script" path="res://scripts/combat/hitbox_component.gd" id="4_hitbox"]
+
+[sub_resource type="RectangleShape2D" id="body"]
+size = Vector2(110, 130)
+
+[node name="RiftColossus" type="CharacterBody2D"]
+script = ExtResource("1_boss")
+
+[node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_health")
+max_health = 900.0
+
+[node name="Hurtbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -65)
+script = ExtResource("3_hurtbox")
+faction = &"enemy"
+health_path = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("body")
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-85, -50)
+script = ExtResource("4_hitbox")
+faction = &"enemy"
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackHitbox"]
+unique_name_in_owner = true
+shape = SubResource("body")
+
+[node name="Body" type="ColorRect" parent="."]
+offset_left = -55.0
+offset_top = -190.0
+offset_right = 55.0
+offset_bottom = 0.0
+color = Color(0.55, 0.13, 0.18, 1)
+[node name="WarningArea" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+mouse_filter = 2
+color = Color(0.95, 0.20, 0.25, 0.42)

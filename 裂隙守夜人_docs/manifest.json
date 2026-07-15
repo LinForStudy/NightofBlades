@@ -1,0 +1,31 @@
+{
+  "project": "裂隙守夜人",
+  "version": 2,
+  "document_count": 20,
+  "files": [
+    "00_README_项目使用说明.md",
+    "01_PRD_产品需求文档.md",
+    "02_GDD_游戏设计文档.md",
+    "03_玩家控制与战斗系统.md",
+    "04_技能系统与技能表.md",
+    "05_敌人与AI设计.md",
+    "06_波次关卡与Boss设计.md",
+    "07_升级构筑与数值设计.md",
+    "08_UI_UX设计规范.md",
+    "09_美术与动画制作规范.md",
+    "10_音效与反馈规范.md",
+    "11_技术架构设计.md",
+    "12_数据结构与资源定义.md",
+    "13_开发阶段与里程碑.md",
+    "14_测试与验收清单.md",
+    "15_Codex分阶段执行提示词.md",
+    "16_MVP任务清单_Backlog.md",
+    "17_项目决策记录_ADR.md",
+    "18_AgentSpriteForge美术生产管线.md",
+    "19_Codex美术资产执行提示词.md",
+    "install_agent_sprite_forge_windows.ps1"
+  ],
+  "integrations": [
+    "agent-sprite-forge"
+  ]
+}

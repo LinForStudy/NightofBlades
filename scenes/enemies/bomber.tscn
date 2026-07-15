@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_controller.gd" id="1_enemy"]
+[ext_resource type="Resource" path="res://resources/enemies/bomber.tres" id="2_data"]
+[ext_resource type="Script" path="res://scripts/combat/health_component.gd" id="3_health"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox_component.gd" id="4_hurtbox"]
+[ext_resource type="Script" path="res://scripts/combat/hitbox_component.gd" id="5_hitbox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(38, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_attack"]
+size = Vector2(54, 44)
+
+[node name="Bomber" type="CharacterBody2D"]
+position = Vector2(1380, 570)
+collision_mask = 3
+script = ExtResource("1_enemy")
+enemy_data = ExtResource("2_data")
+behavior = 2
+
+[node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -22)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -22)
+script = ExtResource("4_hurtbox")
+faction = &"enemy"
+health_path = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-38, -34)
+script = ExtResource("5_hitbox")
+faction = &"enemy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+shape = SubResource("RectangleShape2D_attack")
+
+[node name="Body" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = -19.0
+offset_top = -44.0
+offset_right = 19.0
+offset_bottom = 0.0
+color = Color(0.86, 0.26, 0.45, 1)
+
+[node name="Warning" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -52.0
+offset_top = -72.0
+offset_right = 52.0
+offset_bottom = 4.0
+color = Color(1, 0.16, 0.12, 0.35)
+
+[node name="NameLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -72.0
+offset_top = -96.0
+offset_right = 72.0
+offset_bottom = -72.0
+text = "Bomber"
+horizontal_alignment = 1

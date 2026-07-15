@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UltimateData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/ultimate_data.gd" id="1_data"]
+[ext_resource type="PackedScene" path="res://scenes/skills/skyfall_slash.tscn" id="2_scene"]
+
+[resource]
+script = ExtResource("1_data")
+ultimate_id = &"skyfall_slash"
+display_name = "天陨斩"
+description = "消耗满能量，造成大范围斩击伤害。"
+effect_scene = ExtResource("2_scene")
+energy_cost = 100.0
+base_damage = 200.0
+duration = 0.35
+range = 150.0
+tags = Array[StringName]([&"ultimate", &"physical"])

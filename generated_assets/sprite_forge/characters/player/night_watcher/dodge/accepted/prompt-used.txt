@@ -1,0 +1,2 @@
+User-provided GPT candidate for nightwatcher_dodge.
+Required target: 6 frames, single horizontal strip, each frame 96x96 after processing, transparent background after magenta cleanup, right-facing low dodge/slide pose sequence, same Night Watcher identity as accepted idle/run/jump/fall/land assets, no slash FX, no dust, no text. Grounded action: feet or lowest contact should remain visually aligned across frames.

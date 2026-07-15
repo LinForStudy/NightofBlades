@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/dodge_test_hazard.gd" id="1_hazard"]
+[ext_resource type="Script" path="res://scripts/combat/hitbox_component.gd" id="2_hitbox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hazard"]
+size = Vector2(74, 72)
+
+[node name="DodgeTestHazard" type="Node2D"]
+script = ExtResource("1_hazard")
+
+[node name="Warning" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = -37.0
+offset_top = -72.0
+offset_right = 37.0
+offset_bottom = 0.0
+color = Color(1, 0.1, 0.1, 0.35)
+
+[node name="HazardHitbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -36)
+script = ExtResource("2_hitbox")
+faction = &"enemy"
+damage = 15.0
+knockback_strength = 120.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardHitbox"]
+shape = SubResource("RectangleShape2D_hazard")

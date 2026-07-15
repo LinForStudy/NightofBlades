@@ -1,0 +1,1 @@
+Derived runtime scenery-only midground: ruined rooftops and distant village wall silhouettes behind the playable lane; no collidable platforms, no props, no actors, no UI text.

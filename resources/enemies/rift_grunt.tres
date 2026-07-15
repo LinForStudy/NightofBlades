@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_data.gd" id="1_enemy_data"]
+
+[resource]
+script = ExtResource("1_enemy_data")
+enemy_id = &"rift_grunt"
+display_name = "裂隙杂兵"
+max_health = 35.0
+move_speed = 60.0
+base_damage = 8.0
+attack_range = 54.0
+preferred_range = 60.0
+attack_interval = 1.3
+aim_time = 0.2
+experience_value = 6
+tags = Array[StringName]([&"melee"])

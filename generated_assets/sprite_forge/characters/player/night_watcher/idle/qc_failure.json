@@ -1,0 +1,11 @@
+{
+    "asset_id":  "nightwatcher_idle",
+    "status":  "rejected",
+    "source":  "user_provided_gpt_image",
+    "reason":  "Sprite Forge strict QC rejected source frame 4 because its detected subject touches the source-cell edge.",
+    "required_fix":  "Regenerate only the idle sheet with wider right-side padding in frame 4; no subject part may touch any cell edge.",
+    "accepted_outputs":  [
+
+                         ],
+    "generated_at_utc":  "2026-07-15T03:59:20.2503834Z"
+}

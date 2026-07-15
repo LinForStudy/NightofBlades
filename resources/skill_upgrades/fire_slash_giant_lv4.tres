@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SkillUpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/skill_upgrade_data.gd" id="1_upgrade_data"]
+
+[resource]
+script = ExtResource("1_upgrade_data")
+upgrade_id = &"fire_slash_giant_lv4"
+skill_id = &"fire_slash"
+target_level = 4
+branch_id = &"giant"
+display_name = "fire_slash_giant_lv4"
+description = "Skill evolution upgrade."
+rarity = &"rare"
+weight = 8
+modifiers = {"damage_bonus": 0.45, "range_bonus": 0.25}
