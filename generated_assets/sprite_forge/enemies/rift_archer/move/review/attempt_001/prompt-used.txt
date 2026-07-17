@@ -1,0 +1,1 @@
+Rift Archer move, 4 frames in a strict 2x2 grid. Side-view facing left. Preserve the accepted hooded archer identity, bow, quiver, armor and rift-purple palette. Clear in-place walking cycle, stable feet and body scale, solid #FF00FF background, no projectile or detached FX.

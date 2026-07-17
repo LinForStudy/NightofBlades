@@ -260,6 +260,18 @@
                        "fps":  7.14,
                        "source":  "codex_imagegen",
                        "notes":  "Four-frame ranged-unit idle style lock. Strict QC passed with feet_y=77, zero empty, edge-touch or clamped frames; runtime strip is horizontally assembled for EnemyVisual."
+                   },
+                   {
+                       "id":  "enemy_rift_archer_move",
+                       "kind":  "sprite_animation",
+                       "status":  "accepted",
+                       "path":  "enemies/rift_archer/move/accepted",
+                       "logical_height":  57,
+                       "frames":  4,
+                       "anchor":  "feet",
+                       "fps":  11.11,
+                       "source":  "user_provided",
+                       "notes":  "Four-frame cautious walk cycle. Strict QC passed with feet_y=77 and zero empty, edge-touch or clamped frames; runtime strip is horizontally assembled for EnemyVisual."
                    }
                ]
 }

@@ -9,21 +9,24 @@ function Require-Text([string]$relativePath, [string]$needle) {
 }
 
 Add-Type -AssemblyName System.Drawing
-$relativeSprite = "generated_assets/sprite_forge/enemies/rift_archer/idle/accepted/rift_archer_idle_transparent.png"
-$fullSprite = Join-Path $root $relativeSprite
-if (-not (Test-Path -LiteralPath $fullSprite)) { throw "Missing runtime sprite: $relativeSprite" }
-$image = [System.Drawing.Image]::FromFile($fullSprite)
-try {
-    if ($image.Width -ne 384 -or $image.Height -ne 96) {
-        throw "Invalid archer idle runtime strip size: $($image.Width)x$($image.Height), expected 384x96"
+foreach ($action in @("idle", "move")) {
+    $relativeSprite = "generated_assets/sprite_forge/enemies/rift_archer/$action/accepted/rift_archer_$($action)_transparent.png"
+    $fullSprite = Join-Path $root $relativeSprite
+    if (-not (Test-Path -LiteralPath $fullSprite)) { throw "Missing runtime sprite: $relativeSprite" }
+    $image = [System.Drawing.Image]::FromFile($fullSprite)
+    try {
+        if ($image.Width -ne 384 -or $image.Height -ne 96) {
+            throw "Invalid archer $action runtime strip size: $($image.Width)x$($image.Height), expected 384x96"
+        }
     }
-}
-finally {
-    $image.Dispose()
+    finally {
+        $image.Dispose()
+    }
 }
 
 foreach ($token in @(
     'idle_sheet = ExtResource("7_idle")',
+    'move_sheet = ExtResource("8_move")',
     'position = Vector2(0, -29)',
     'visible = false'
 )) {
@@ -34,4 +37,4 @@ foreach ($forbidden in @("/review/", "_raw.png", "sheet-transparent.png")) {
     if ($sceneText.Contains($forbidden)) { throw "Archer scene references production-only asset token: $forbidden" }
 }
 
-Write-Host "Rift archer idle runtime contract passed."
+Write-Host "Rift archer runtime contract passed."
