@@ -1,0 +1,1 @@
+Rift Archer attack, 4 frames in a strict 2x2 grid. Side-view facing left. Ready, draw, full draw, release recovery. Preserve accepted archer identity and scale. Arrow may remain nocked but no detached projectile or hit FX. Stable feet. Solid #FF00FF background.

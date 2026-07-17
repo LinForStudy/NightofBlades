@@ -272,6 +272,18 @@
                        "fps":  11.11,
                        "source":  "user_provided",
                        "notes":  "Four-frame cautious walk cycle. Strict QC passed with feet_y=77 and zero empty, edge-touch or clamped frames; runtime strip is horizontally assembled for EnemyVisual."
+                   },
+                   {
+                       "id":  "enemy_rift_archer_attack",
+                       "kind":  "sprite_animation",
+                       "status":  "accepted",
+                       "path":  "enemies/rift_archer/attack/accepted",
+                       "logical_height":  56.25,
+                       "frames":  4,
+                       "anchor":  "feet",
+                       "fps":  11.76,
+                       "source":  "user_provided",
+                       "notes":  "Four-frame bow ready/draw/release recovery body sequence. Nocked arrow remains body-attached; no detached projectile or hit FX. Strict QC passed with zero empty, edge-touch or clamped frames."
                    }
                ]
 }

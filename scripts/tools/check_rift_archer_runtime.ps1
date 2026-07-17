@@ -9,7 +9,7 @@ function Require-Text([string]$relativePath, [string]$needle) {
 }
 
 Add-Type -AssemblyName System.Drawing
-foreach ($action in @("idle", "move")) {
+foreach ($action in @("idle", "move", "attack")) {
     $relativeSprite = "generated_assets/sprite_forge/enemies/rift_archer/$action/accepted/rift_archer_$($action)_transparent.png"
     $fullSprite = Join-Path $root $relativeSprite
     if (-not (Test-Path -LiteralPath $fullSprite)) { throw "Missing runtime sprite: $relativeSprite" }
@@ -27,6 +27,7 @@ foreach ($action in @("idle", "move")) {
 foreach ($token in @(
     'idle_sheet = ExtResource("7_idle")',
     'move_sheet = ExtResource("8_move")',
+    'attack_sheet = ExtResource("9_attack")',
     'position = Vector2(0, -29)',
     'visible = false'
 )) {

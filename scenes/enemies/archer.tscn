@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_controller.gd" id="1_enemy"]
 [ext_resource type="Resource" path="res://resources/enemies/archer.tres" id="2_data"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/enemy_visual.gd" id="6_visual"]
 [ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/enemies/rift_archer/idle/accepted/rift_archer_idle_transparent.png" id="7_idle"]
 [ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/enemies/rift_archer/move/accepted/rift_archer_move_transparent.png" id="8_move"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/enemies/rift_archer/attack/accepted/rift_archer_attack_transparent.png" id="9_attack"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(32, 50)
@@ -64,6 +65,7 @@ z_index = 4
 script = ExtResource("6_visual")
 idle_sheet = ExtResource("7_idle")
 move_sheet = ExtResource("8_move")
+attack_sheet = ExtResource("9_attack")
 
 [node name="Body" type="Sprite2D" parent="EnemyVisual"]
 position = Vector2(0, -29)
