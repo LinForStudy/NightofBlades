@@ -14,6 +14,7 @@ const DEATH_FX_SCENE := preload("res://scenes/enemies/enemy_death_fx.tscn")
 @export var attack_fps := 12.0
 @export var hurt_fps := 14.0
 @export var death_fps := 10.0
+@export_range(-1, 1, 2) var source_facing := -1
 
 @onready var body: Sprite2D = $Body
 
@@ -40,12 +41,15 @@ func _process(delta: float) -> void:
 			_frame = (_frame + 1) % _frames
 		elif _frame < _frames - 1:
 			_frame += 1
-		body.frame = _frame
+		body.hframes = _frames
+		body.vframes = 1
+		body.frame = clampi(_frame, 0, _frames - 1)
 	if Time.get_ticks_msec() >= _one_shot_until:
 		_update_from_owner()
 
 func set_facing(direction: int) -> void:
-	scale.x = float(direction)
+	var authored_facing := -1 if source_facing < 0 else 1
+	scale.x = float(direction * authored_facing)
 
 func set_tint(tint: Color) -> void:
 	body.modulate = tint
@@ -53,7 +57,7 @@ func set_tint(tint: Color) -> void:
 func play_hurt() -> void:
 	play_action(&"hurt", true)
 
-func play_attack() -> void:
+func play_attack(_enemy: Node = null) -> void:
 	play_action(&"attack", true)
 
 func spawn_death_fx(world_position: Vector2) -> void:
@@ -93,6 +97,7 @@ func play_action(next_action: StringName, force := false) -> void:
 	_loop = profile["loop"]
 	body.texture = profile["texture"]
 	body.hframes = _frames
+	body.vframes = 1
 	body.frame = 0
 	if not _loop:
 		_one_shot_until = Time.get_ticks_msec() + int(ceil(float(_frames) / _fps * 1000.0))

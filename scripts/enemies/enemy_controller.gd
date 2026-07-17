@@ -300,7 +300,7 @@ func _refresh_runtime_stats() -> void:
 	if body != null:
 		body.color = _display_color
 	if visual != null:
-		visual.set_tint(_display_color)
+		visual.set_tint(_display_color if is_elite else Color.WHITE)
 
 func _resolve_target() -> void:
 	if target != null and is_instance_valid(target):

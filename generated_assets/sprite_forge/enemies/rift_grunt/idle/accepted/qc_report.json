@@ -1,0 +1,13 @@
+{
+  "input": "generated_assets/sprite_forge/enemies/rift_grunt/idle/review/attempt_002/sheet-transparent.png",
+  "expected_size": [384, 96],
+  "actual_size": [384, 96],
+  "frames": [
+    {"index": 0, "valid": true, "feet_y": 77, "touches_edge": false},
+    {"index": 1, "valid": true, "feet_y": 77, "touches_edge": false},
+    {"index": 2, "valid": true, "feet_y": 77, "touches_edge": false},
+    {"index": 3, "valid": true, "feet_y": 77, "touches_edge": false}
+  ],
+  "passed": true,
+  "summary": {"visible_height_mean": 57.0, "body_scale_cv": 0.00214, "anchor_y_std": 0.02423, "edge_touch_count": 0, "empty_count": 0}
+}

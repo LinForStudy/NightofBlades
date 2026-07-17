@@ -1,0 +1,12 @@
+{
+  "input": "generated_assets/sprite_forge/enemies/rift_grunt/hurt/review/attempt_002/sheet-transparent.png",
+  "expected_size": [192, 96],
+  "actual_size": [192, 96],
+  "runtime_layout": "horizontal_2_frame_strip_reassembled_from_validated_2x1_source_grid",
+  "frames": [
+    {"index": 0, "valid": true, "feet_y": 77, "touches_edge": false},
+    {"index": 1, "valid": true, "feet_y": 77, "touches_edge": false}
+  ],
+  "passed": true,
+  "summary": {"visible_height_mean": 53.5, "body_scale_cv": 0.02988, "anchor_y_std": 0.02181, "edge_touch_count": 0, "empty_count": 0, "paste_clamped_count": 0}
+}

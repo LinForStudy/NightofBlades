@@ -172,6 +172,94 @@
                        "game_path":  "res://assets/environments/abandoned_village/stage_reference.png",
                        "source":  "local_integration",
                        "notes":  "Reference mockup only; runtime scene uses separated parallax layers, platform strip, props, and existing collision."
+                   },
+                   {
+                       "id":  "enemy_rift_grunt_idle",
+                       "kind":  "sprite_animation",
+                       "status":  "accepted",
+                       "path":  "enemies/rift_grunt/idle/accepted",
+                       "logical_height":  57,
+                       "frames":  4,
+                       "anchor":  "feet",
+                       "fps":  7.14
+                   },
+                   {
+                       "id":  "enemy_rift_grunt_move",
+                       "kind":  "sprite_animation",
+                       "status":  "accepted",
+                       "path":  "enemies/rift_grunt/move/accepted",
+                       "logical_height":  57,
+                       "frames":  4,
+                       "anchor":  "feet",
+                       "fps":  11.11
+                   },
+                   {
+                       "id":  "enemy_rift_grunt_attack_attempt_001",
+                       "kind":  "sprite_animation",
+                       "status":  "rejected",
+                       "path":  "enemies/rift_grunt/attack/review/attempt_001",
+                       "frames":  4,
+                       "anchor":  "feet",
+                       "source":  "user_provided",
+                       "notes":  "Rejected: source feet lines drift between grid rows (anchor_y_std 0.0683 > 0.05) and preserve-scale output height is 25px versus the accepted 57px reference."
+                   },
+                   {
+                       "id":  "enemy_rift_grunt_attack",
+                       "kind":  "sprite_animation",
+                       "status":  "accepted",
+                       "path":  "enemies/rift_grunt/attack/accepted",
+                       "logical_height":  55,
+                       "frames":  4,
+                       "anchor":  "feet",
+                       "fps":  12.05,
+                       "source":  "codex_imagegen",
+                       "notes":  "Compact body-only melee attack; no baked slash FX. Strict QC passed with feet_y=89, zero edge-touch and zero clamped frames."
+                   },
+                   {
+                       "id":  "enemy_rift_grunt_hurt_attempt_001",
+                       "kind":  "sprite_animation",
+                       "status":  "rejected",
+                       "path":  "enemies/rift_grunt/hurt/review/attempt_001",
+                       "frames":  2,
+                       "anchor":  "feet",
+                       "source":  "user_provided",
+                       "notes":  "Rejected: source feet lines drift by 70px between cells (anchor_y_std 0.0565 > 0.05); bottom-row subject must move downward while preserving scale."
+                   },
+                   {
+                       "id":  "enemy_rift_grunt_hurt",
+                       "kind":  "sprite_animation",
+                       "status":  "accepted",
+                       "path":  "enemies/rift_grunt/hurt/accepted",
+                       "logical_height":  54,
+                       "frames":  2,
+                       "anchor":  "feet",
+                       "fps":  14.08,
+                       "source":  "user_provided",
+                       "notes":  "Two-frame grounded hurt animation. Strict QC passed with feet_y=77, zero edge-touch and zero clamped frames; delivery sheet is horizontally assembled for EnemyVisual."
+                   },
+                   {
+                       "id":  "enemy_rift_grunt_death",
+                       "kind":  "sprite_animation",
+                       "status":  "accepted",
+                       "path":  "enemies/rift_grunt/death/accepted",
+                       "logical_height":  57,
+                       "frames":  6,
+                       "anchor":  "feet",
+                       "fps":  10.0,
+                       "source":  "user_provided",
+                       "notes":  "Six-frame grounded collapse. Validated 2x3 source was deterministically reassembled into a horizontal Godot strip; zero empty, edge-touch or clamped frames."
+                   },
+                   {
+                       "id":  "enemy_rift_archer_idle",
+                       "kind":  "sprite_animation",
+                       "status":  "accepted",
+                       "path":  "enemies/rift_archer/idle/accepted",
+                       "logical_height":  57,
+                       "frames":  4,
+                       "anchor":  "feet",
+                       "fps":  7.14,
+                       "source":  "codex_imagegen",
+                       "notes":  "Four-frame ranged-unit idle style lock. Strict QC passed with feet_y=77, zero empty, edge-touch or clamped frames; runtime strip is horizontally assembled for EnemyVisual."
                    }
                ]
 }

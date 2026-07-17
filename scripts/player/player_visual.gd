@@ -93,8 +93,11 @@ func _advance_frame() -> void:
 			return
 		else:
 			_frame = _frame_count - 1
-	body.frame = _frame
-	outline.frame = _frame
+	body.hframes = _frame_count
+	outline.hframes = _frame_count
+	var safe_frame := clampi(_frame, 0, _frame_count - 1)
+	body.frame = safe_frame
+	outline.frame = safe_frame
 
 func _set_body(texture: Texture2D, frames: int, fps: float, loop := true, next_action := StringName()) -> void:
 	if texture == null:

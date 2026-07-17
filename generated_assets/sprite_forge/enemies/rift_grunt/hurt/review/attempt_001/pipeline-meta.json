@@ -1,0 +1,177 @@
+{
+  "target": "creature",
+  "mode": "hurt",
+  "prompt": "",
+  "role": "",
+  "input": "generated_assets\\sprite_forge\\enemies\\rift_grunt\\hurt\\review\\attempt_001\\rift_grunt_hurt_raw_2x1.png",
+  "threshold": 100,
+  "edge_threshold": 150,
+  "duration": 71,
+  "rows": 2,
+  "cols": 1,
+  "cell_size": 96,
+  "fit_scale": 0.6,
+  "trim_border": 4,
+  "edge_clean_depth": 3,
+  "align": "feet",
+  "shared_scale": true,
+  "scale_strategy": "fit",
+  "component_mode": "largest",
+  "component_padding": 0,
+  "min_component_area": 1,
+  "edge_touch_margin": 0,
+  "frame_labels": [
+    "rift_grunt_hurt-1",
+    "rift_grunt_hurt-2"
+  ],
+  "frames": [
+    {
+      "grid": [
+        0,
+        0
+      ],
+      "source_box": [
+        0,
+        0,
+        1254,
+        627
+      ],
+      "component_mode": "largest",
+      "component_count": 1,
+      "selected_component_area": 70403,
+      "selected_component_bbox": [
+        451,
+        143,
+        777,
+        535
+      ],
+      "crop_bbox": [
+        451,
+        143,
+        777,
+        535
+      ],
+      "source_frame_size": [
+        1246,
+        619
+      ],
+      "is_empty": false,
+      "subject_area": 70403,
+      "body_core_area": 70403,
+      "body_area_fraction": 0.09128143824373698,
+      "anchor_source": [
+        666.0,
+        526.0
+      ],
+      "source_edge_touch": false,
+      "output_edge_touch": false,
+      "edge_touch": false,
+      "output_size": [
+        47,
+        57
+      ],
+      "paste_position": [
+        24,
+        20
+      ],
+      "paste_clamped": false,
+      "aligned_bbox": [
+        24,
+        20,
+        71,
+        77
+      ],
+      "source_to_output_scale": 0.14693877551020407,
+      "bbox_scale_applied": true,
+      "scale_strategy": "fit",
+      "scale_changed": true
+    },
+    {
+      "grid": [
+        1,
+        0
+      ],
+      "source_box": [
+        0,
+        627,
+        1254,
+        1254
+      ],
+      "component_mode": "largest",
+      "component_count": 9,
+      "selected_component_area": 60732,
+      "selected_component_bbox": [
+        462,
+        132,
+        774,
+        464
+      ],
+      "crop_bbox": [
+        462,
+        132,
+        774,
+        464
+      ],
+      "source_frame_size": [
+        1246,
+        619
+      ],
+      "is_empty": false,
+      "subject_area": 60732,
+      "body_core_area": 60921,
+      "body_area_fraction": 0.07898749341997785,
+      "anchor_source": [
+        662.0,
+        456.0
+      ],
+      "source_edge_touch": false,
+      "output_edge_touch": false,
+      "edge_touch": false,
+      "output_size": [
+        45,
+        48
+      ],
+      "paste_position": [
+        25,
+        29
+      ],
+      "paste_clamped": false,
+      "aligned_bbox": [
+        25,
+        29,
+        70,
+        77
+      ],
+      "source_to_output_scale": 0.14693877551020407,
+      "bbox_scale_applied": true,
+      "scale_strategy": "fit",
+      "scale_changed": true
+    }
+  ],
+  "edge_touch_frames": [],
+  "source_edge_touch_frames": [],
+  "output_edge_touch_frames": [],
+  "empty_frames": [],
+  "paste_clamped_frames": [],
+  "qc_summary": {
+    "frame_count": 2,
+    "valid_frame_count": 2,
+    "empty_count": 0,
+    "edge_touch_count": 0,
+    "paste_clamped_count": 0,
+    "body_scale_mean": 0.2915876595864706,
+    "output_subject_height_mean": 52.5,
+    "body_scale_cv": 0.03614872535534081,
+    "anchor_x_std": 0.0016051364365970988,
+    "anchor_y_std": 0.05654281098546038,
+    "anchor_y_mean": 0.7932148626817448
+  },
+  "qc_config": {
+    "strict_qc": true,
+    "reject_edge_touch": true,
+    "allow_source_edge_touch": false,
+    "max_body_scale_cv": 0.08,
+    "max_anchor_y_std": 0.05,
+    "max_profile_scale_drift": null
+  }
+}

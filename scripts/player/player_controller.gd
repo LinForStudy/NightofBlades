@@ -63,6 +63,7 @@ var _attack_index := 0
 var _attack_elapsed := 0.0
 var _queued_combo := false
 var _attack_hitbox_fired := false
+var _attack_feedback_sent := false
 
 var _attacks: Array[Dictionary] = [
 	{"damage": 10.0, "duration": 0.24, "active_start": 0.07, "active_end": 0.13, "combo_open": 0.12, "knockback": 180.0, "label": "attack_1"},
@@ -255,6 +256,7 @@ func _start_attack(index: int, profile_override: Dictionary = {}, allows_combo :
 	_attack_elapsed = 0.0
 	_queued_combo = false
 	_attack_hitbox_fired = false
+	_attack_feedback_sent = false
 	attack_hitbox.deactivate()
 	_set_state(PlayerState.ATTACK)
 	if player_visual != null:
@@ -438,7 +440,8 @@ func _on_attack_hit_confirmed(_hurtbox: Area2D, context: Variant) -> void:
 	var battle := get_tree().current_scene
 	if battle != null and battle.has_method("spawn_damage_number"):
 		battle.spawn_damage_number(float(context.get("final_damage", 0.0)), context.get("hit_position", global_position) + Vector2(8, -42))
-	if battle != null and battle.has_method("request_hit_feedback"):
+	if not _attack_feedback_sent and battle != null and battle.has_method("request_hit_feedback"):
+		_attack_feedback_sent = true
 		battle.request_hit_feedback(_attack_index)
 
 func _on_health_damaged(_amount: float, context: Variant) -> void:

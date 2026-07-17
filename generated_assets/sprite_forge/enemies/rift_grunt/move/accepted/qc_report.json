@@ -1,0 +1,13 @@
+{
+  "input": "generated_assets/sprite_forge/enemies/rift_grunt/move/review/attempt_003/sheet-transparent.png",
+  "expected_size": [384, 96],
+  "actual_size": [384, 96],
+  "frames": [
+    {"index": 0, "valid": true, "feet_y": 77, "touches_edge": false},
+    {"index": 1, "valid": true, "feet_y": 77, "touches_edge": false},
+    {"index": 2, "valid": true, "feet_y": 77, "touches_edge": false},
+    {"index": 3, "valid": true, "feet_y": 77, "touches_edge": false}
+  ],
+  "passed": true,
+  "summary": {"visible_height_mean": 56.75, "body_scale_cv": 0.01021, "anchor_y_std": 0.01178, "edge_touch_count": 0, "empty_count": 0}
+}

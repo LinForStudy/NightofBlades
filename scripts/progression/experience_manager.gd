@@ -29,12 +29,17 @@ func spawn_experience_orb(value: int, world_position: Vector2) -> Node:
 	if experience_orb_scene == null or _orb_root == null:
 		return null
 	var orb := experience_orb_scene.instantiate()
+	call_deferred("_attach_experience_orb", orb, value, world_position)
+	return orb
+
+func _attach_experience_orb(orb: Node, value: int, world_position: Vector2) -> void:
+	if orb == null or not is_instance_valid(orb) or _orb_root == null:
+		return
 	_orb_root.add_child(orb)
 	if orb.has_method("setup"):
 		orb.setup(value, world_position)
 	if orb.has_signal("collected"):
 		orb.collected.connect(_on_orb_collected)
-	return orb
 
 func add_experience(amount: int) -> void:
 	if amount <= 0:

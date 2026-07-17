@@ -11,7 +11,7 @@ var _target: Node2D
 var _is_collected := false
 
 func _ready() -> void:
-	monitoring = true
+	monitoring = false
 	monitorable = false
 	body_entered.connect(_on_body_entered)
 	_resolve_target()
@@ -21,7 +21,7 @@ func setup(experience_value: int, start_position: Vector2) -> void:
 	global_position = start_position
 	_is_collected = false
 	visible = true
-	monitoring = true
+	set_deferred("monitoring", true)
 
 func _physics_process(delta: float) -> void:
 	if _is_collected:
@@ -48,7 +48,7 @@ func _collect() -> void:
 	if _is_collected:
 		return
 	_is_collected = true
-	monitoring = false
+	set_deferred("monitoring", false)
 	visible = false
 	collected.emit(value)
 	queue_free()
