@@ -15,6 +15,7 @@ const DEATH_FX_SCENE := preload("res://scenes/enemies/enemy_death_fx.tscn")
 @export var hurt_fps := 14.0
 @export var death_fps := 10.0
 @export_range(-1, 1, 2) var source_facing := -1
+@export var visual_scale := 1.0
 
 @onready var body: Sprite2D = $Body
 
@@ -27,6 +28,7 @@ var _loop := true
 var _one_shot_until := 0.0
 
 func _ready() -> void:
+	scale = Vector2(visual_scale, visual_scale)
 	var enemy := get_parent()
 	if enemy != null and enemy.has_signal("attack_started"):
 		enemy.attack_started.connect(play_attack)
@@ -49,7 +51,7 @@ func _process(delta: float) -> void:
 
 func set_facing(direction: int) -> void:
 	var authored_facing := -1 if source_facing < 0 else 1
-	scale.x = float(direction * authored_facing)
+	scale = Vector2(float(direction * authored_facing) * visual_scale, visual_scale)
 
 func set_tint(tint: Color) -> void:
 	body.modulate = tint

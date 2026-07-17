@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/skills/lightning_dash.gd" id="1_lightning_dash"]
 [ext_resource type="Script" path="res://scripts/combat/hitbox_component.gd" id="2_hitbox"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/fx/player/slash_arc/accepted/nightwatcher_slash_arc_transparent.png" id="3_skill_fx"]
+[ext_resource type="Script" path="res://scripts/skills/skill_visual_sprite.gd" id="4_skill_visual"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lightning_dash"]
 size = Vector2(190, 54)
@@ -9,13 +11,13 @@ size = Vector2(190, 54)
 [node name="LightningDash" type="Node2D"]
 script = ExtResource("1_lightning_dash")
 
-[node name="Visual" type="ColorRect" parent="."]
-offset_left = -95.0
-offset_top = -27.0
-offset_right = 95.0
-offset_bottom = 27.0
-color = Color(0.3, 0.75, 1, 0.52)
-
+[node name="Visual" type="Sprite2D" parent="."]
+scale = Vector2(2.25, 0.55)
+texture = ExtResource("3_skill_fx")
+hframes = 4
+script = ExtResource("4_skill_visual")
+fps = 18.0
+loop = true
 [node name="Hitbox" type="Area2D" parent="."]
 script = ExtResource("2_hitbox")
 faction = &"player"

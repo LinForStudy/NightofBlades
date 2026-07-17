@@ -112,13 +112,13 @@ slash_sheet = ExtResource("39_slash")
 hit_sheet = ExtResource("40_hit")
 
 [node name="Outline" type="Sprite2D" parent="VisualPivot/PlayerVisual"]
-position = Vector2(0, -48)
+position = Vector2(0, -44)
 scale = Vector2(1.09, 1.09)
 modulate = Color(0.035, 0.025, 0.07, 0.9)
 z_index = -1
 
 [node name="Body" type="Sprite2D" parent="VisualPivot/PlayerVisual"]
-position = Vector2(0, -48)
+position = Vector2(0, -44)
 modulate = Color(1.15, 1.12, 1.2, 1)
 
 [node name="ContactShadow" type="Polygon2D" parent="VisualPivot"]

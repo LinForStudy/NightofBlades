@@ -37,7 +37,8 @@ foreach ($token in @(
     'attack_sheet = ExtResource("9_attack")',
     'hurt_sheet = ExtResource("10_hurt")',
     'death_sheet = ExtResource("11_death")',
-    "position = Vector2(0, -29)"
+    "position = Vector2(0, -28)",
+    "visual_scale = 1.3"
 )) {
     Require-Text "scenes/enemies/rift_grunt.tscn" $token
 }

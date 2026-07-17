@@ -162,6 +162,7 @@ func _play_fx(sprite: Sprite2D, texture: Texture2D, frames: int, fps: float) -> 
 		return
 	sprite.texture = texture
 	sprite.hframes = frames
+	sprite.vframes = 1
 	sprite.frame = 0
 	sprite.visible = true
 	var duration := float(frames) / maxf(fps, 0.1)

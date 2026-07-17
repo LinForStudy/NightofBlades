@@ -7,4 +7,4 @@ z_index = 7
 script = ExtResource("1_death_fx")
 
 [node name="Body" type="Sprite2D" parent="."]
-position = Vector2(0, -29)
+position = Vector2(0, -28)

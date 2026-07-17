@@ -165,7 +165,6 @@ func _capture_charge_input() -> void:
 	_attack_buffer_timer = 0.0
 	attack_hitbox.deactivate()
 	_update_attack_arc(true)
-	attack_arc.color = Color(1.0, 0.42, 0.14, 0.64)
 	_set_state(PlayerState.CHARGE)
 
 func _try_drop_through_platform() -> void:
@@ -359,11 +358,9 @@ func _update_visual_direction() -> void:
 		return
 	visual_pivot.scale.x = float(facing_direction)
 
-func _update_attack_arc(is_visible: bool) -> void:
-	if attack_arc == null:
-		return
-	attack_arc.visible = is_visible
-	attack_arc.color = Color(1.0, 0.83, 0.28, 0.72)
+func _update_attack_arc(_is_visible: bool) -> void:
+	if attack_arc != null:
+		attack_arc.visible = false
 
 func apply_passive_upgrade(effect_key: StringName, effect_value: float, _stack_count: int, _upgrade: Resource) -> void:
 	match String(effect_key):
@@ -456,13 +453,15 @@ func _on_health_damaged(_amount: float, context: Variant) -> void:
 
 func _show_hit_feedback() -> void:
 	if hit_flash != null:
-		hit_flash.visible = true
+		hit_flash.visible = false
+	if player_visual != null:
+		player_visual.modulate = Color(1.0, 0.38, 0.38, 1.0)
 	var battle := get_tree().current_scene
 	if battle != null and battle.has_method("request_player_hit_feedback"):
 		battle.request_player_hit_feedback(global_position)
 	await get_tree().create_timer(0.12, false, true).timeout
-	if hit_flash != null and current_state != PlayerState.DEAD:
-		hit_flash.visible = false
+	if player_visual != null:
+		player_visual.modulate = Color.WHITE
 
 func _on_health_depleted(_context: Variant) -> void:
 	if _death_handled:

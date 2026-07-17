@@ -38,7 +38,8 @@ foreach ($token in @(
     'idle_sheet = ExtResource("7_idle")',
     'move_sheet = ExtResource("8_move")',
     'attack_sheet = ExtResource("9_attack")',
-    'position = Vector2(0, -29)',
+    'position = Vector2(0, -28)',
+    'visual_scale = 1.3',
     'visible = false'
 )) {
     Require-Text "scenes/enemies/archer.tscn" $token

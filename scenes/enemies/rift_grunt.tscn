@@ -65,6 +65,7 @@ color = Color(0.75, 0.22, 0.18, 1)
 unique_name_in_owner = true
 z_index = 4
 script = ExtResource("6_visual")
+visual_scale = 1.3
 idle_sheet = ExtResource("7_idle")
 move_sheet = ExtResource("8_move")
 attack_sheet = ExtResource("9_attack")
@@ -72,7 +73,7 @@ hurt_sheet = ExtResource("10_hurt")
 death_sheet = ExtResource("11_death")
 
 [node name="Body" type="Sprite2D" parent="EnemyVisual"]
-position = Vector2(0, -29)
+position = Vector2(0, -28)
 
 [node name="Warning" type="ColorRect" parent="."]
 unique_name_in_owner = true

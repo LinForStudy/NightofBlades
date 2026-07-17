@@ -295,6 +295,24 @@
                        "anchor":  "center",
                        "source":  "codex_imagegen",
                        "notes":  "Single right-facing arrow with restrained rift binding. Runtime rotates the projectile node to its launch direction; speed, damage, lifetime and collision remain unchanged."
+                   },
+                   {
+                       "id":  "fx_player_slash_arc_runtime",
+                       "kind":  "fx_animation",
+                       "status":  "accepted",
+                       "path":  "fx/player/slash_arc/accepted/nightwatcher_slash_arc_transparent.png",
+                       "grid":  "1x4",
+                       "frame_size":  "96x96",
+                       "notes":  "Deterministically reassembled from the accepted 2x2 review frames for PlayerVisual horizontal playback."
+                   },
+                   {
+                       "id":  "fx_player_hit_spark_runtime",
+                       "kind":  "fx_animation",
+                       "status":  "accepted",
+                       "path":  "fx/player/hit_spark/accepted/nightwatcher_hit_spark_transparent.png",
+                       "grid":  "1x4",
+                       "frame_size":  "96x96",
+                       "notes":  "Deterministically reassembled from the accepted 2x2 review frames for PlayerVisual horizontal playback."
                    }
                ]
 }

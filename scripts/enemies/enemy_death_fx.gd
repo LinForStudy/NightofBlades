@@ -14,7 +14,7 @@ func setup(texture: Texture2D, frames: int, fps: float, facing_scale: float, tin
 	_fps = maxf(fps, 0.1)
 	body.hframes = _frames
 	body.frame = 0
-	body.scale.x = facing_scale
+	body.scale = Vector2(facing_scale, absf(facing_scale))
 	body.modulate = tint
 
 func _process(delta: float) -> void:
