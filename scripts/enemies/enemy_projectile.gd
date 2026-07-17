@@ -20,6 +20,7 @@ func _ready() -> void:
 func launch(source_node: Node, launch_direction: Vector2, attack_damage: float) -> void:
 	source = source_node
 	direction = launch_direction.normalized()
+	rotation = direction.angle()
 	damage = attack_damage
 	_timer = lifetime
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_projectile.gd" id="1_projectile"]
+[ext_resource type="Texture2D" path="res://generated_assets/sprite_forge/enemies/rift_archer/projectile/accepted/rift_archer_arrow_transparent.png" id="2_arrow"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_projectile"]
 radius = 8.0
@@ -11,9 +12,5 @@ script = ExtResource("1_projectile")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_projectile")
 
-[node name="Visual" type="ColorRect" parent="."]
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-color = Color(0.93, 0.38, 0.25, 1)
+[node name="Visual" type="Sprite2D" parent="."]
+texture = ExtResource("2_arrow")

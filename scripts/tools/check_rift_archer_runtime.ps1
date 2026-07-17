@@ -24,6 +24,16 @@ foreach ($action in @("idle", "move", "attack")) {
     }
 }
 
+$projectileSprite = "generated_assets/sprite_forge/enemies/rift_archer/projectile/accepted/rift_archer_arrow_transparent.png"
+$projectileImage = [System.Drawing.Image]::FromFile((Join-Path $root $projectileSprite))
+try {
+    if ($projectileImage.Width -ne 64 -or $projectileImage.Height -ne 64) {
+        throw "Invalid archer projectile size: $($projectileImage.Width)x$($projectileImage.Height), expected 64x64"
+    }
+}
+finally {
+    $projectileImage.Dispose()
+}
 foreach ($token in @(
     'idle_sheet = ExtResource("7_idle")',
     'move_sheet = ExtResource("8_move")',
@@ -37,5 +47,8 @@ $sceneText = [System.IO.File]::ReadAllText((Join-Path $root "scenes/enemies/arch
 foreach ($forbidden in @("/review/", "_raw.png", "sheet-transparent.png")) {
     if ($sceneText.Contains($forbidden)) { throw "Archer scene references production-only asset token: $forbidden" }
 }
+
+Require-Text "scenes/enemies/enemy_projectile.tscn" 'texture = ExtResource("2_arrow")'
+Require-Text "scripts/enemies/enemy_projectile.gd" "rotation = direction.angle()"
 
 Write-Host "Rift archer runtime contract passed."
