@@ -1,0 +1,35 @@
+{
+    "input":  "generated_assets/sprite_forge/enemies/flying_eye/hurt/review/attempt_001/sheet-transparent.png",
+    "expected_size":  [
+                          192,
+                          96
+                      ],
+    "actual_size":  [
+                        192,
+                        96
+                    ],
+    "runtime_layout":  "horizontal_2_frame_strip_reassembled_from_validated_source_grid",
+    "frames":  [
+                   {
+                       "index":  0,
+                       "source_frame":  1,
+                       "valid":  true,
+                       "touches_edge":  false
+                   },
+                   {
+                       "index":  1,
+                       "source_frame":  2,
+                       "valid":  true,
+                       "touches_edge":  false
+                   }
+               ],
+    "passed":  true,
+    "summary":  {
+                    "edge_touch_count":  0,
+                    "empty_count":  0,
+                    "paste_clamped_count":  0,
+                    "processed_source_frames":  4,
+                    "body_scale_cv":  0.04402786263669492,
+                    "anchor_y_std":  0.077822382742751633
+                }
+}

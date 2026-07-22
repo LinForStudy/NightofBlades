@@ -67,7 +67,7 @@ if ($player.Contains('fire_slash') -or $player.Contains('lightning_dash') -or $p
 }
 
 $hud = [System.IO.File]::ReadAllText((Join-Path $root 'scenes/ui/battle_hud.tscn'), [System.Text.Encoding]::UTF8)
-foreach ($snippet in @('SkillBar', 'SkillSlot1', 'SkillSlot2', 'SkillSlot3', '[U]', '[I]', '[O]')) {
+foreach ($snippet in @('SkillBar', 'SkillSlot1', 'SkillSlot2', 'SkillSlot3', 'text = "U"', 'text = "I"', 'text = "O"', 'IconTexture')) {
   if (-not $hud.Contains($snippet)) {
     Write-Error "BattleHUD missing Phase 7 snippet: $snippet"
   }

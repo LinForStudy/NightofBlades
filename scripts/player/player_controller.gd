@@ -10,6 +10,8 @@ signal player_died(player: Node)
 
 enum PlayerState { IDLE, RUN, JUMP, FALL, ATTACK, CHARGE, DODGE, HURT, DEAD }
 
+const COMBO_STEP_SPEEDS: Array[float] = [85.0, 115.0, 150.0]
+
 @export var move_speed := 260.0
 @export var acceleration := 1800.0
 @export var friction := 2200.0
@@ -20,6 +22,7 @@ enum PlayerState { IDLE, RUN, JUMP, FALL, ATTACK, CHARGE, DODGE, HURT, DEAD }
 @export var coyote_time := 0.10
 @export var jump_buffer_time := 0.12
 @export var attack_buffer_time := 0.15
+@export var combo_buffer_time := 0.24
 @export var charge_windup := 0.52
 @export var dodge_buffer_time := 0.10
 @export var dodge_cooldown := 1.0
@@ -152,9 +155,15 @@ func _capture_attack_input() -> void:
 		_start_attack(0, _air_attack, false)
 		return
 
+	if current_state == PlayerState.ATTACK:
+		if _attack_index < _attacks.size() - 1:
+			_attack_buffer_timer = combo_buffer_time
+			_try_queue_combo_from_buffer()
+		else:
+			_attack_buffer_timer = 0.0
+		return
+
 	_attack_buffer_timer = attack_buffer_time
-	if current_state == PlayerState.ATTACK and _can_queue_combo():
-		_queued_combo = true
 
 func _capture_charge_input() -> void:
 	if not Input.is_action_just_pressed("charge_attack"):
@@ -261,6 +270,8 @@ func _start_attack(index: int, profile_override: Dictionary = {}, allows_combo :
 	if player_visual != null:
 		player_visual.play_action(StringName(_active_attack.get("label", "attack_1")))
 	_update_attack_arc(false)
+	if profile_override.is_empty():
+		velocity.x = float(facing_direction) * COMBO_STEP_SPEEDS[_attack_index]
 
 func _process_attack(delta: float) -> void:
 	_attack_elapsed += delta
@@ -268,6 +279,8 @@ func _process_attack(delta: float) -> void:
 	var attack_speed_scale := 1.0 / maxf(attack_speed_multiplier, 0.1)
 	var active_start: float = float(attack["active_start"]) * attack_speed_scale
 	var active_end: float = float(attack["active_end"]) * attack_speed_scale
+
+	_try_queue_combo_from_buffer()
 
 	if not _attack_hitbox_fired and _attack_elapsed >= active_start:
 		_attack_hitbox_fired = true
@@ -331,7 +344,16 @@ func _update_state() -> void:
 func _can_queue_combo() -> bool:
 	if _attack_index >= _attacks.size() - 1:
 		return false
-	return _attack_elapsed >= float(_attacks[_attack_index]["combo_open"])
+	var attack_speed_scale := 1.0 / maxf(attack_speed_multiplier, 0.1)
+	return _attack_elapsed >= float(_attacks[_attack_index]["combo_open"]) * attack_speed_scale
+
+func _try_queue_combo_from_buffer() -> void:
+	if current_state != PlayerState.ATTACK or _queued_combo or _attack_buffer_timer <= 0.0:
+		return
+	if not _active_attack_allows_combo or not _can_queue_combo():
+		return
+	_queued_combo = true
+	_attack_buffer_timer = 0.0
 
 func _set_state(new_state: PlayerState) -> void:
 	if current_state == new_state:

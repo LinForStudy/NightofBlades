@@ -55,6 +55,16 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "开始游戏"
 
+[node name="GrowthButton" type="Button" parent="MenuPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "局外成长"
+
+[node name="SettingsButton" type="Button" parent="MenuPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "设置"
+
 [node name="QuitButton" type="Button" parent="MenuPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -112,6 +122,126 @@ layout_mode = 2
 text = "进入战场"
 
 [node name="CharacterBackButton" type="Button" parent="CharacterSelectPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "返回"
+
+[node name="GrowthPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -250.0
+offset_right = 270.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="GrowthPanel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="GrowthPanel/Content"]
+layout_mode = 2
+text = "局外成长"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 30
+
+[node name="CrystalLabel" type="Label" parent="GrowthPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "裂隙结晶：0"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+
+[node name="TalentTitle" type="Label" parent="GrowthPanel/Content"]
+layout_mode = 2
+text = "守夜人天赋"
+
+[node name="VitalityButton" type="Button" parent="GrowthPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "坚守：最大生命 +10"
+
+[node name="CombatTrainingButton" type="Button" parent="GrowthPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "锋锐：攻击伤害 +6%"
+
+[node name="SkillTitle" type="Label" parent="GrowthPanel/Content"]
+layout_mode = 2
+text = "技能解锁"
+
+[node name="BladeStormButton" type="Button" parent="GrowthPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "解锁旋刃风暴  ·  90 结晶"
+
+[node name="StatisticsLabel" type="Label" parent="GrowthPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "出战 0  ·  胜利 0  ·  击杀 0"
+horizontal_alignment = 1
+
+[node name="GrowthBackButton" type="Button" parent="GrowthPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "返回"
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -190.0
+offset_right = 240.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="SettingsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="SettingsPanel/Content"]
+layout_mode = 2
+text = "设置"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 30
+
+[node name="VolumeLabel" type="Label" parent="SettingsPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "主音量：0 dB"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="SettingsPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -40.0
+max_value = 0.0
+step = 1.0
+
+[node name="FullscreenCheck" type="CheckButton" parent="SettingsPanel/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "全屏显示"
+
+[node name="SettingsHint" type="Label" parent="SettingsPanel/Content"]
+layout_mode = 2
+text = "设置会自动保存，并在下次启动时恢复。"
+horizontal_alignment = 1
+
+[node name="SettingsBackButton" type="Button" parent="SettingsPanel/Content"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "返回"

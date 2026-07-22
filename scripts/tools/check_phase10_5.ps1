@@ -11,11 +11,11 @@ function Require-Text([string]$Path, [string]$Needle) {
 & (Join-Path $PSScriptRoot "check_phase10.ps1")
 & (Join-Path $PSScriptRoot "check_battle_map.ps1")
 $hudScene = Require-Text "scenes/ui/battle_hud.tscn" "PlayerStatusPanel"
-foreach ($node in @("BossStatusPanel", "PoiseBar", "PoiseText", "RunInfoPanel", "SkillBar", "AnnouncementLayer", "DebugOverlay", "UltimateSlot", "VictoryPanel", "PausePanel", "ResumeButton")) {
+foreach ($node in @("BossStatusPanel", "PoiseBar", "PoiseText", "RunInfoPanel", "SkillBar", "AnnouncementLayer", "DebugOverlay", "UltimateSlot", "VictoryPanel", "PausePanel", "ResumeButton", "RestartButton", "PauseMenuButton")) {
     if (-not $hudScene.Contains($node)) { throw "BattleHUD node missing: $node" }
 }
 $hudScript = Require-Text "scripts/ui/battle_hud.gd" "experience_manager_path"
-foreach ($token in @("skill_cooldown_changed", "ultimate_energy_changed", "_on_boss_poise_changed", "debug_toggle", "show_defeat", "ui_cancel", "GameManager.go_to_main_menu", "_pause_battle", "GameManager.set_paused")) {
+foreach ($token in @("skill_cooldown_changed", "ultimate_energy_changed", "_on_boss_poise_changed", "debug_toggle", "show_defeat", "ui_cancel", "GameManager.go_to_main_menu", "_pause_battle", "GameManager.set_paused", "resume_button.pressed.connect(_resume_battle)", "restart_button.pressed.connect(_restart_battle)", "pause_menu_button.pressed.connect(_return_to_menu)")) {
     if (-not $hudScript.Contains($token)) { throw "BattleHUD binding missing: $token" }
 }
 $player = Require-Text "scripts/player/player_controller.gd" "player_died.emit(self)"
@@ -30,6 +30,10 @@ $battle = Require-Text "scenes/battle/battle_scene.tscn" "BattleHUD"
 foreach ($token in @("OverlayUI", "LevelUpPanel")) {
     if (-not $battle.Contains($token)) { throw "Battle overlay missing: $token" }
 }
+$overlayBlock = [regex]::Match($battle, '(?ms)^\[node name="OverlayUI" type="Control" parent="CanvasLayer"\]\r?\n(?<body>.*?)(?=^\[node )')
+if (-not $overlayBlock.Success -or -not $overlayBlock.Groups['body'].Value.Contains('mouse_filter = 2')) { throw 'OverlayUI must ignore empty-area mouse input so the pause menu remains clickable.' }
+$pauseBlock = [regex]::Match($hudScene, '(?ms)^\[node name="PausePanel" type="PanelContainer" parent="\."\]\r?\n(?<body>.*?)(?=^\[node )')
+if (-not $pauseBlock.Success -or -not $pauseBlock.Groups['body'].Value.Contains('mouse_filter = 0')) { throw 'PausePanel must receive mouse input.' }
 foreach ($legacyNode in @("BattlePlaceholderUI", "TopBar", "SkillHUD", "ReturnToMenuButton")) {
     if ($battle.Contains($legacyNode)) { throw "Legacy battle HUD node remains: $legacyNode" }
 }

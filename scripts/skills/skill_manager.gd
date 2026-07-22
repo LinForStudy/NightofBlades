@@ -18,11 +18,22 @@ var _state_by_skill: Dictionary = {}
 func _ready() -> void:
 	_effect_root = get_node_or_null(effect_root_path)
 	cooldowns.cooldown_changed.connect(_on_cooldown_changed)
+	_filter_locked_skills()
 	for skill in skills:
 		if skill == null or skill.get("skill_id") == null:
 			push_warning("SkillManager contains an invalid skill resource.")
 			continue
 		_ensure_state(skill)
+
+func _filter_locked_skills() -> void:
+	var unlocked_skills: Array[Resource] = []
+	for skill in skills:
+		if skill == null:
+			continue
+		var skill_id := StringName(str(skill.get("skill_id")))
+		if ProgressionManager.is_skill_unlocked(skill_id):
+			unlocked_skills.append(skill)
+	skills = unlocked_skills
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_echo() or not event.is_pressed():

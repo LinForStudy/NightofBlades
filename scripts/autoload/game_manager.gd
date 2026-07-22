@@ -41,6 +41,7 @@ func finish_battle(success: bool) -> void:
 	last_battle_success = success
 	if last_battle_crystal_reward > 0:
 		ProgressionManager.award_crystals(last_battle_crystal_reward)
+	ProgressionManager.record_battle(success, last_battle_duration_seconds, last_battle_kill_count, last_battle_max_combo, last_battle_damage_dealt)
 	_set_state(GameState.RESULT)
 	EventBus.battle_finished.emit(success)
 

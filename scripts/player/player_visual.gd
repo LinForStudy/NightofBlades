@@ -132,11 +132,11 @@ func _get_action_profile(action: StringName) -> Dictionary:
 		&"death":
 			return {"texture": death_sheet, "frames": 8, "fps": 9.0, "loop": false, "next_action": StringName()}
 		&"attack_1":
-			return {"texture": attack_1_sheet, "frames": 6, "fps": 18.0, "loop": false, "next_action": StringName()}
+			return {"texture": attack_1_sheet, "frames": 6, "fps": 25.0, "loop": false, "next_action": StringName()}
 		&"attack_2":
-			return {"texture": _texture_or(attack_2_sheet, attack_1_sheet), "frames": 6, "fps": 20.0, "loop": false, "next_action": StringName()}
+			return {"texture": attack_1_sheet, "frames": 6, "fps": 20.0, "loop": false, "next_action": StringName()}
 		&"attack_3":
-			return {"texture": _texture_or(attack_3_sheet, attack_1_sheet), "frames": 6, "fps": 16.0, "loop": false, "next_action": StringName()}
+			return {"texture": attack_1_sheet, "frames": 6, "fps": 16.0, "loop": false, "next_action": StringName()}
 		&"air_attack", &"charge_attack":
 			return {"texture": attack_1_sheet, "frames": 6, "fps": 18.0, "loop": false, "next_action": StringName()}
 		_:

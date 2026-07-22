@@ -15,10 +15,13 @@ signal final_boss_ready()
 @export var auto_start := true
 @export var elite_modifiers: Array[Resource] = []
 @export var final_boss_time := 720.0
+@export var right_spawn_distance := 920.0
+@export var right_entry_distance := 620.0
 
 var elapsed_time := 0.0
 var is_running := false
 var current_wave: Resource
+var _stage_wave_index := -1
 
 var _spawn_timer := 0.0
 var _final_boss_emitted := false
@@ -42,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	if not is_running:
 		return
 	elapsed_time += delta
-	if not _final_boss_emitted and elapsed_time >= final_boss_time:
+	if final_boss_time > 0.0 and not _final_boss_emitted and elapsed_time >= final_boss_time:
 		_final_boss_emitted = true
 		stop_waves()
 		final_boss_ready.emit()
@@ -63,6 +66,10 @@ func start_waves() -> void:
 
 func stop_waves() -> void:
 	is_running = false
+
+func set_stage_wave_index(stage_index: int) -> void:
+	_stage_wave_index = clampi(stage_index, -1, waves.size() - 1)
+	_update_current_wave()
 
 func get_alive_count() -> int:
 	_cleanup_alive_list()
@@ -100,12 +107,15 @@ func _instantiate_enemy(scene: PackedScene) -> Node:
 
 func _update_current_wave() -> void:
 	var next_wave: Resource = null
-	for wave in waves:
-		if wave == null:
-			continue
-		if elapsed_time >= float(wave.start_time) and elapsed_time < float(wave.end_time):
-			next_wave = wave
-			break
+	if _stage_wave_index >= 0 and _stage_wave_index < waves.size():
+		next_wave = waves[_stage_wave_index]
+	else:
+		for wave in waves:
+			if wave == null:
+				continue
+			if elapsed_time >= float(wave.start_time) and elapsed_time < float(wave.end_time):
+				next_wave = wave
+				break
 	if next_wave != current_wave:
 		current_wave = next_wave
 		wave_changed.emit(current_wave)
@@ -176,21 +186,26 @@ func _choose_enemy_scene(wave: Resource) -> PackedScene:
 	return wave.enemy_scenes[0]
 
 func _choose_spawn_position(scene: PackedScene) -> Vector2:
-	var points := _air_spawn_points if _is_air_enemy(scene) else _ground_spawn_points
-	if points == null or points.get_child_count() == 0:
-		return Vector2(900, 570)
-	var candidates: Array[Node2D] = []
-	for child in points.get_children():
-		if child is Node2D:
-			candidates.append(child)
-	if candidates.is_empty():
-		return Vector2(900, 570)
+	var is_air_enemy := _is_air_enemy(scene)
+	var points := _air_spawn_points if is_air_enemy else _ground_spawn_points
+	var right_side_candidates := _right_side_spawn_candidates(points)
+	var fallback := Vector2(2480.0, 260.0 if is_air_enemy else 648.0)
+	var marker_position: Vector2 = fallback
+	if not right_side_candidates.is_empty():
+		marker_position = right_side_candidates.pick_random().global_position
 	if _player == null:
-		return candidates.pick_random().global_position
-	candidates.sort_custom(func(a: Node2D, b: Node2D) -> bool:
-		return a.global_position.distance_squared_to(_player.global_position) < b.global_position.distance_squared_to(_player.global_position)
-	)
-	return candidates[0].global_position
+		return marker_position
+	var spawn_x: float = minf(_player.global_position.x + right_spawn_distance, marker_position.x)
+	return Vector2(spawn_x, marker_position.y)
+
+func _right_side_spawn_candidates(points: Node) -> Array[Node2D]:
+	var candidates: Array[Node2D] = []
+	if points == null:
+		return candidates
+	for child in points.get_children():
+		if child is Node2D and str(child.name).contains("Right"):
+			candidates.append(child)
+	return candidates
 
 func _entry_target_x(spawn_x: float) -> float:
 	if _player == null:
@@ -198,7 +213,9 @@ func _entry_target_x(spawn_x: float) -> float:
 	var direction: float = signf(spawn_x - _player.global_position.x)
 	if is_zero_approx(direction):
 		direction = 1.0
-	return clampf(_player.global_position.x + direction * 620.0, 20.0, 2380.0)
+	if direction > 0.0:
+		return minf(_player.global_position.x + right_entry_distance, spawn_x)
+	return maxf(_player.global_position.x - right_entry_distance, spawn_x)
 
 func _is_air_enemy(scene: PackedScene) -> bool:
 	return scene.resource_path.find("flying_eye") >= 0

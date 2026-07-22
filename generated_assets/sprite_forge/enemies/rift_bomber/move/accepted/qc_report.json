@@ -1,0 +1,93 @@
+{
+    "input":  "generated_assets/sprite_forge/enemies/rift_bomber/move/review/attempt_001/sheet-transparent.png",
+    "raw_source":  "generated_assets/sprite_forge/enemies/rift_bomber/move/review/attempt_001/raw-sheet.png",
+    "raw_source_size":  [
+                            1254,
+                            1254
+                        ],
+    "raw_grid":  [
+                     2,
+                     2
+                 ],
+    "expected_size":  [
+                          384,
+                          96
+                      ],
+    "actual_size":  [
+                        384,
+                        96
+                    ],
+    "runtime_layout":  "horizontal_4_frame_strip_reassembled_from_validated_2x2_source_grid",
+    "frames":  [
+                   {
+                       "touches_edge":  false,
+                       "feet_y":  76,
+                       "bbox":  [
+                                    26,
+                                    20,
+                                    68,
+                                    1,
+                                    76,
+                                    1
+                                ],
+                       "valid":  true,
+                       "visible_height":  57,
+                       "index":  0
+                   },
+                   {
+                       "touches_edge":  false,
+                       "feet_y":  76,
+                       "bbox":  [
+                                    26,
+                                    21,
+                                    68,
+                                    1,
+                                    76,
+                                    1
+                                ],
+                       "valid":  true,
+                       "visible_height":  56,
+                       "index":  1
+                   },
+                   {
+                       "touches_edge":  false,
+                       "feet_y":  76,
+                       "bbox":  [
+                                    28,
+                                    20,
+                                    66,
+                                    1,
+                                    76,
+                                    1
+                                ],
+                       "valid":  true,
+                       "visible_height":  57,
+                       "index":  2
+                   },
+                   {
+                       "touches_edge":  false,
+                       "feet_y":  76,
+                       "bbox":  [
+                                    28,
+                                    20,
+                                    66,
+                                    1,
+                                    76,
+                                    1
+                                ],
+                       "valid":  true,
+                       "visible_height":  57,
+                       "index":  3
+                   }
+               ],
+    "passed":  true,
+    "summary":  {
+                    "visible_height_mean":  56.75,
+                    "body_scale_cv":  0.013996740841650552,
+                    "anchor_y_std":  0.032155830855190685,
+                    "source_edge_touch_count":  0,
+                    "output_edge_touch_count":  0,
+                    "paste_clamped_count":  0,
+                    "empty_count":  0
+                }
+}

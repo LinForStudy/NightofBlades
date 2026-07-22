@@ -1,13 +1,26 @@
 extends Node2D
 
 const DAMAGE_NUMBER_SCENE := preload("res://scenes/ui/damage_number.tscn")
+const BOSS_UNLOCK_LEVEL := 8
+const BOSS_APPROACH_DISTANCE := 1400.0
+const BOSS_ARENA_MAX_ENTRANCE_X := 6600.0
+const BOSS_ARENA_GAP := 400.0
+
+const REGION_DATA := {
+	&"village_gate": {"title": "守夜村口", "message": "守住村口，向右清剿裂隙杂兵。", "wave_index": 0},
+	&"broken_bridge": {"title": "断桥巷道", "message": "断桥巷道：远程与飞行威胁正在靠近。", "wave_index": 1},
+	&"rift_invasion": {"title": "裂隙侵蚀区", "message": "裂隙侵蚀加剧：精英怪物已混入队列。", "wave_index": 2},
+	&"colossus_courtyard": {"title": "巨像前庭", "message": "巨像前庭：保持推进，寻找裂隙巨像。", "wave_index": 4}
+}
 
 @onready var effect_root: Node2D = $World/EffectRoot
 @onready var camera: Camera2D = $CameraRig/Camera2D
 @onready var experience_manager: Node = $Managers/ExperienceManager
 @onready var wave_manager: Node = $Managers/WaveManager
+@onready var level_up_dimmer: ColorRect = %LevelUpDimmer
 @onready var level_up_panel: PanelContainer = %LevelUpPanel
 @onready var upgrade_title: Label = %UpgradeTitle
+@onready var upgrade_subtitle: Label = %UpgradeSubtitle
 @onready var upgrade_buttons: Array[Button] = [%UpgradeButton1, %UpgradeButton2, %UpgradeButton3]
 @onready var player: Node = $World/EntityRoot/Player
 @onready var battle_hud: BattleHud = $CanvasLayer/BattleHUD
@@ -16,6 +29,7 @@ const DAMAGE_NUMBER_SCENE := preload("res://scenes/ui/damage_number.tscn")
 
 var _battle_completed := false
 var _boss_encounter_started := false
+var _boss_entrance_armed := false
 var _battle_elapsed_seconds := 0.0
 var _battle_kill_count := 0
 var _battle_combo_count := 0
@@ -24,6 +38,7 @@ var _combo_timeout := 0.0
 var _battle_damage_dealt := 0.0
 var _battle_damage_received := 0.0
 var _skill_cast_counts: Dictionary = {}
+var _visited_regions: Dictionary = {}
 
 func _process(delta: float) -> void:
 	if GameManager.current_state == GameManager.GameState.BATTLE and not get_tree().paused:
@@ -39,8 +54,15 @@ func _ready() -> void:
 	_setup_phase6_progression()
 	_setup_player_death_listener()
 	_setup_phase10_completion()
+	_configure_mobile_upgrade_ui()
+	call_deferred("_enter_region", &"village_gate")
 	EventBus.battle_started.emit()
 
+func _configure_mobile_upgrade_ui() -> void:
+	if battle_hud != null and battle_hud.is_mobile_layout():
+		var input_hint := level_up_panel.get_node_or_null("InnerFrame/Content/Footer/InputHint") as Label
+		if input_hint != null:
+			input_hint.text = "Tap an upgrade card to continue"
 func _unhandled_input(event: InputEvent) -> void:
 	if level_up_panel == null or not level_up_panel.visible:
 		return
@@ -68,14 +90,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		viewport.set_input_as_handled()
 
 func _setup_phase6_progression() -> void:
+	_set_level_up_overlay_visible(false)
 	if level_up_panel != null:
-		level_up_panel.visible = false
 		level_up_panel.process_mode = Node.PROCESS_MODE_ALWAYS
 	for index in upgrade_buttons.size():
 		upgrade_buttons[index].pressed.connect(_on_upgrade_button_pressed.bind(index))
 	if experience_manager != null:
 		experience_manager.level_up_choices_ready.connect(_on_level_up_choices_ready)
 		experience_manager.level_up_finished.connect(_on_level_up_finished)
+		experience_manager.experience_changed.connect(_on_experience_changed_for_boss)
+		_on_experience_changed_for_boss(experience_manager.current_experience, experience_manager._required_for_next_level(), experience_manager.level)
 	if wave_manager != null and wave_manager.has_signal("enemy_spawned"):
 		wave_manager.enemy_spawned.connect(_connect_enemy_for_experience)
 	for child in $World/EntityRoot.get_children():
@@ -86,16 +110,53 @@ func _setup_phase10_completion() -> void:
 		boss.boss_defeated.connect(_on_boss_defeated)
 	if boss != null:
 		_connect_target_damage(boss)
-	if wave_manager != null and wave_manager.has_signal("final_boss_ready"):
-		wave_manager.final_boss_ready.connect(_on_final_boss_ready)
+
 	if boss_entrance != null:
 		boss_entrance.set_deferred("monitoring", false)
 
-func _on_final_boss_ready() -> void:
-	_start_boss_encounter()
+func _on_experience_changed_for_boss(_current: int, _required: int, level: int) -> void:
+	if level < BOSS_UNLOCK_LEVEL or _boss_entrance_armed or _boss_encounter_started:
+		return
+	_boss_entrance_armed = true
+	_position_boss_gate()
+	if _player_has_reached_boss_gate():
+		_start_boss_encounter()
+		return
+	if boss_entrance != null:
+		boss_entrance.set_deferred("monitoring", true)
+	if battle_hud != null:
+		battle_hud.show_announcement("裂隙感应开启：继续向右推进，寻找巨像。", 2.4)
+
+func _position_boss_gate() -> void:
+	if player == null:
+		return
+	var entrance_x: float = minf(float(player.global_position.x) + BOSS_APPROACH_DISTANCE, BOSS_ARENA_MAX_ENTRANCE_X)
+	if boss_entrance != null:
+		boss_entrance.global_position = Vector2(entrance_x, boss_entrance.global_position.y)
+	if boss != null:
+		boss.global_position = Vector2(entrance_x + BOSS_ARENA_GAP, boss.global_position.y)
+
+func _player_has_reached_boss_gate() -> bool:
+	return player != null and boss_entrance != null and player.global_position.x >= boss_entrance.global_position.x
+
+func _on_region_gate_body_entered(body: Node2D, region_id: StringName) -> void:
+	if body == player:
+		_enter_region(region_id)
+
+func _enter_region(region_id: StringName) -> void:
+	if _visited_regions.has(region_id):
+		return
+	var region: Dictionary = REGION_DATA.get(region_id, {})
+	if region.is_empty():
+		return
+	_visited_regions[region_id] = true
+	if wave_manager != null and wave_manager.has_method("set_stage_wave_index"):
+		wave_manager.set_stage_wave_index(int(region["wave_index"]))
+	if battle_hud != null:
+		battle_hud.show_announcement("%s · %s" % [region["title"], region["message"]], 2.3)
 
 func _on_boss_entrance_body_entered(body: Node2D) -> void:
-	if body == player:
+	if body == player and _boss_entrance_armed:
 		_start_boss_encounter()
 
 func _start_boss_encounter() -> void:
@@ -214,32 +275,45 @@ func _on_enemy_died_for_experience(enemy: Node) -> void:
 func _on_level_up_choices_ready(options: Array[Resource], pending_count: int) -> void:
 	if level_up_panel == null:
 		return
-	level_up_panel.visible = true
-	if not upgrade_buttons.is_empty():
-		upgrade_buttons[0].grab_focus()
+	_set_level_up_overlay_visible(true)
 	if upgrade_title != null:
-		upgrade_title.text = "选择升级  待选择：%s" % pending_count
+		upgrade_title.text = "等级提升 · 选择一项强化"
+	if upgrade_subtitle != null:
+		if pending_count > 1:
+			upgrade_subtitle.text = "从三项能力中选择一项 · 本轮后仍有 %d 次待选择" % (pending_count - 1)
+		else:
+			upgrade_subtitle.text = "从三项能力中选择一项，继续守夜"
 	for index in upgrade_buttons.size():
 		var button := upgrade_buttons[index]
 		if index < options.size():
 			var upgrade := options[index]
 			button.visible = true
 			button.disabled = false
-			button.text = "[%s] %s\n%s\n%s/%s" % [index + 1, upgrade.get("display_name"), upgrade.get("description"), _get_upgrade_stack(upgrade), _get_upgrade_max(upgrade)]
+			if button.has_method("present_upgrade"):
+				button.call("present_upgrade", upgrade, _get_upgrade_stack(upgrade), _get_upgrade_max(upgrade), index + 1)
+			else:
+				button.text = "[%s] %s" % [index + 1, upgrade.get("display_name")]
 		else:
 			button.visible = false
 			button.disabled = true
+	for button in upgrade_buttons:
+		if button.visible and not button.disabled:
+			button.grab_focus()
+			break
 
 func _on_upgrade_button_pressed(index: int) -> void:
-	if level_up_panel != null:
-		level_up_panel.visible = false
+	_set_level_up_overlay_visible(false)
 	if experience_manager != null and experience_manager.has_method("choose_upgrade"):
 		experience_manager.choose_upgrade(index)
 
 func _on_level_up_finished(_level: int) -> void:
-	if level_up_panel != null:
-		level_up_panel.visible = false
+	_set_level_up_overlay_visible(false)
 
+func _set_level_up_overlay_visible(is_visible: bool) -> void:
+	if level_up_dimmer != null:
+		level_up_dimmer.visible = is_visible
+	if level_up_panel != null:
+		level_up_panel.visible = is_visible
 func _get_upgrade_stack(upgrade: Resource) -> int:
 	var manager := $Managers/UpgradeManager
 	if manager != null and manager.has_method("get_stack_count"):

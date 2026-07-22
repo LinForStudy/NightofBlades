@@ -37,8 +37,11 @@ foreach ($token in @(
     'attack_sheet = ExtResource("9_attack")',
     'hurt_sheet = ExtResource("10_hurt")',
     'death_sheet = ExtResource("11_death")',
-    "position = Vector2(0, -28)",
-    "visual_scale = 1.3"
+    'collision_layer = 2',
+    'collision_mask = 1',
+    "position = Vector2(0, -18)",
+    "visual_scale = 1.5",
+    '[node name="Warning" type="Node2D" parent="."]'
 )) {
     Require-Text "scenes/enemies/rift_grunt.tscn" $token
 }
@@ -52,7 +55,7 @@ Require-Text "scripts/progression/experience_manager.gd" 'call_deferred("_attach
 Require-Text "scripts/progression/experience_orb.gd" 'set_deferred("monitoring", false)'
 
 $sceneText = [System.IO.File]::ReadAllText((Join-Path $root "scenes/enemies/rift_grunt.tscn"), [System.Text.Encoding]::UTF8)
-foreach ($forbidden in @("/review/", "_raw.png", "sheet-transparent.png")) {
+foreach ($forbidden in @("/review/", "_raw.png", "sheet-transparent.png", '[node name="Warning" type="ColorRect" parent="."]')) {
     if ($sceneText.Contains($forbidden)) { throw "RiftGrunt scene references production-only asset token: $forbidden" }
 }
 

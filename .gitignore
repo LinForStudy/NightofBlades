@@ -6,3 +6,9 @@ export_presets.cfg
 *.tmp
 *.log
 artifacts/runtime_logs/
+
+# Godot/Android generated build output
+android/build/
+*.aar
+*.apk
+*.aab

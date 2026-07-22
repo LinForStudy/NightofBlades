@@ -23,6 +23,7 @@ enum BossState { IDLE, WINDUP, ACTIVE, RECOVERY, TRANSITION, STAGGER, DEAD }
 @onready var attack_hitbox: HitboxComponent = %AttackHitbox
 @onready var attack_shape: CollisionShape2D = %AttackCollision
 @onready var warning_area: ColorRect = %WarningArea
+@onready var visual: RiftColossusVisual = %BossVisual
 
 const ATTACKS: Array[Dictionary] = [
 	{ "tag": &"boss_slam", "name": "砸地", "windup": 0.85, "active": 0.14, "recovery": 1.10, "cooldown": 1.50, "damage": 14.0, "knockback": 260.0, "offset": Vector2(-105, -36), "size": Vector2(210, 28), "warning_color": Color(1.0, 0.62, 0.12, 0.60) },
@@ -109,12 +110,16 @@ func _begin_attack() -> void:
 	warning_area.position = attack_hitbox.position - Vector2(float(_current_attack["size"].x) * 0.5, 0.0)
 	warning_area.size = _current_attack["size"]
 	warning_area.color = _current_attack["warning_color"]
-	warning_area.visible = true
+	warning_area.visible = false
+	if visual != null:
+		visual.play_attack(StringName(_current_attack["tag"]), _facing_to_target())
 	boss_announcement.emit("巨像蓄力：%s" % _current_attack["name"])
 	_enter_state(BossState.WINDUP, float(_current_attack["windup"]))
 
 func _begin_active_window() -> void:
-	warning_area.color = Color(1.0, 0.35, 0.22, 0.75)
+	warning_area.visible = false
+	if visual != null:
+		visual.trigger_attack_fx(StringName(_current_attack["tag"]), _facing_to_target())
 	attack_hitbox.activate(self, float(_current_attack["damage"]), float(_current_attack["knockback"]), _facing_to_target(), float(_current_attack["active"]), [_current_attack["tag"]])
 	_enter_state(BossState.ACTIVE, float(_current_attack["active"]))
 
@@ -139,6 +144,8 @@ func _enter_state(next_state: BossState, duration: float) -> void:
 	_state_timer = maxf(duration, 0.0)
 	if next_state != BossState.WINDUP:
 		warning_area.color = Color(0.95, 0.20, 0.25, 0.42)
+	if next_state == BossState.IDLE and visual != null:
+		visual.play_idle()
 
 func _on_damaged(amount: float, _context: Variant) -> void:
 	if not is_activated or state == BossState.STAGGER or state == BossState.DEAD:

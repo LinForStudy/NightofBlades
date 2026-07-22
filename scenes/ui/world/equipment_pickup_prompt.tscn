@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/equipment_pickup_prompt.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/ui/hud/icons/icon_equipment_relic.png" id="2_icon"]
+
+[sub_resource type="StyleBoxFlat" id="icon_frame"]
+bg_color = Color(0.035, 0.025, 0.055, 0.9)
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.48, 0.3, 0.68, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="prompt_panel"]
+bg_color = Color(0.018, 0.026, 0.043, 0.92)
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.46, 0.54, 0.96)
+anti_aliasing = false
+
+[node name="EquipmentPickupPrompt" type="Node2D"]
+z_index = 40
+script = ExtResource("1")
+icon_texture = ExtResource("2_icon")
+
+[node name="EquipmentName" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -90.0
+offset_top = -86.0
+offset_right = 90.0
+offset_bottom = -64.0
+mouse_filter = 2
+text = ""
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.86, 0.78, 0.94, 1)
+
+[node name="IconFrame" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+offset_left = -25.0
+offset_top = -58.0
+offset_right = 25.0
+offset_bottom = -8.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("icon_frame")
+
+[node name="EquipmentIcon" type="TextureRect" parent="IconFrame"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_filter = 1
+texture = ExtResource("2_icon")
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+
+[node name="PickupPrompt" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+offset_left = -48.0
+offset_top = 2.0
+offset_right = 48.0
+offset_bottom = 28.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("prompt_panel")
+
+[node name="Text" type="Label" parent="PickupPrompt"]
+layout_mode = 2
+text = "[E] 拾取"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.94, 0.88, 0.72, 1)

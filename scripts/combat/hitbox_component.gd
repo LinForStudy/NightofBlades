@@ -16,6 +16,7 @@ var source: Node
 var facing_direction := 1
 var _active_timer := 0.0
 var _hit_hurtboxes: Array[Area2D] = []
+var _radial_knockback := false
 
 func _ready() -> void:
 	monitoring = false
@@ -23,6 +24,14 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 
 func activate(source_node: Node, attack_damage: float, attack_knockback: float, direction: int, duration: float, tags: Array = []) -> void:
+	_radial_knockback = false
+	_begin_activation(source_node, attack_damage, attack_knockback, direction, duration, tags)
+
+func activate_radial(source_node: Node, attack_damage: float, attack_knockback: float, duration: float, tags: Array = []) -> void:
+	_radial_knockback = true
+	_begin_activation(source_node, attack_damage, attack_knockback, 1, duration, tags)
+
+func _begin_activation(source_node: Node, attack_damage: float, attack_knockback: float, direction: int, duration: float, tags: Array) -> void:
 	source = source_node
 	damage = attack_damage
 	knockback_strength = attack_knockback
@@ -63,6 +72,12 @@ func _try_hit(area: Area2D) -> void:
 
 	_hit_hurtboxes.append(area)
 	var direction := Vector2(float(facing_direction), -0.25).normalized()
+	if _radial_knockback:
+		direction = area.global_position - global_position
+		if direction.length_squared() < 0.001:
+			direction = Vector2.UP
+		else:
+			direction = direction.normalized()
 	var context: Variant = DAMAGE_CONTEXT.create(source, damage, direction * knockback_strength, global_position, attack_tags)
 	var did_hit := bool(area.receive_hit(context))
 	if did_hit:

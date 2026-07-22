@@ -10,6 +10,9 @@ function Require-Text([string]$relativePath, [string]$needle) {
 & (Join-Path $PSScriptRoot "check_phase10_5.ps1")
 & (Join-Path $PSScriptRoot "check_rift_grunt_runtime.ps1")
 & (Join-Path $PSScriptRoot "check_rift_archer_runtime.ps1")
+& (Join-Path $PSScriptRoot "check_rift_bomber_runtime.ps1")
+& (Join-Path $PSScriptRoot "check_flying_eye_runtime.ps1")
+& (Join-Path $PSScriptRoot "check_monster_pair_runtime_validation.ps1")
 & (Join-Path $PSScriptRoot "check_player_attack_visuals.ps1")
 & (Join-Path $PSScriptRoot "check_skill_visuals.ps1")
 foreach ($token in @("func start_new_game()", "func restart_battle()", "func go_to_main_menu()", "func finish_battle(success: bool)", "func _reset_runtime_state()", "Engine.time_scale = 1.0", "GameState.RESULT")) {

@@ -1,0 +1,1 @@
+Same armored left-facing flying eye. Exact 2x2 four-phase hurt grid: impact, recoil, stagger, recover; runtime uses first two frames. Stable center and scale, solid #FF00FF, no detached effects, blood, ground, grid, text, UI, or scenery.

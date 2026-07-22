@@ -1,0 +1,47 @@
+{
+    "input":  "generated_assets/sprite_forge/enemies/flying_eye/idle/review/attempt_001/sheet-transparent.png",
+    "expected_size":  [
+                          384,
+                          96
+                      ],
+    "actual_size":  [
+                        384,
+                        96
+                    ],
+    "runtime_layout":  "horizontal_4_frame_strip_reassembled_from_validated_source_grid",
+    "frames":  [
+                   {
+                       "index":  0,
+                       "source_frame":  1,
+                       "valid":  true,
+                       "touches_edge":  false
+                   },
+                   {
+                       "index":  1,
+                       "source_frame":  2,
+                       "valid":  true,
+                       "touches_edge":  false
+                   },
+                   {
+                       "index":  2,
+                       "source_frame":  3,
+                       "valid":  true,
+                       "touches_edge":  false
+                   },
+                   {
+                       "index":  3,
+                       "source_frame":  4,
+                       "valid":  true,
+                       "touches_edge":  false
+                   }
+               ],
+    "passed":  true,
+    "summary":  {
+                    "edge_touch_count":  0,
+                    "empty_count":  0,
+                    "paste_clamped_count":  0,
+                    "processed_source_frames":  4,
+                    "body_scale_cv":  0.023089355190642254,
+                    "anchor_y_std":  0.029686349467627413
+                }
+}

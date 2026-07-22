@@ -1,6 +1,10 @@
 class_name BattleHud
 extends Control
 
+const MobileControls := preload("res://scripts/ui/mobile_controls.gd")
+
+@export var force_mobile_controls := false
+
 @export var player_path: NodePath
 @export var boss_path: NodePath
 @export var experience_manager_path: NodePath
@@ -32,6 +36,12 @@ extends Control
 @onready var pause_menu_button: Button = %PauseMenuButton
 @onready var ultimate_bar: ProgressBar = %UltimateEnergyBar
 @onready var ultimate_text: Label = %UltimateText
+@onready var skill_bar: PanelContainer = %SkillBar
+@onready var low_health_frame: Panel = %LowHealthFrame
+@onready var ultimate_icon: TextureRect = %UltimateIconTexture
+
+var _mobile_controls
+var _is_mobile_layout := false
 
 var _player: Node
 var _boss: Node
@@ -42,6 +52,8 @@ var _kill_count := 0
 var _skill_ids: Array[StringName] = []
 var _announcement_time := 0.0
 var _boss_is_presented := false
+var _ultimate_ready := false
+var _health_ratio := 1.0
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -50,6 +62,7 @@ func _ready() -> void:
 	victory_panel.visible = false
 	pause_panel.visible = false
 	pause_panel.process_mode = Node.PROCESS_MODE_ALWAYS
+	skill_bar.modulate = Color.WHITE
 	defeat_restart_button.pressed.connect(_restart_battle)
 	defeat_menu_button.pressed.connect(_return_to_menu)
 	victory_restart_button.pressed.connect(_restart_battle)
@@ -57,6 +70,9 @@ func _ready() -> void:
 	resume_button.pressed.connect(_resume_battle)
 	restart_button.pressed.connect(_restart_battle)
 	pause_menu_button.pressed.connect(_return_to_menu)
+	_is_mobile_layout = force_mobile_controls or OS.has_feature("mobile")
+	if _is_mobile_layout:
+		_setup_mobile_controls()
 	announcement_label.visible = false
 	_player = get_node_or_null(player_path)
 	_boss = get_node_or_null(boss_path)
@@ -65,6 +81,20 @@ func _ready() -> void:
 	_bind_experience()
 	_bind_boss()
 
+func is_mobile_layout() -> bool:
+	return _is_mobile_layout
+
+func _setup_mobile_controls() -> void:
+	_mobile_controls = MobileControls.new()
+	_mobile_controls.name = "MobileControls"
+	_mobile_controls.pause_requested.connect(_toggle_pause_from_touch)
+	add_child(_mobile_controls)
+
+func _toggle_pause_from_touch() -> void:
+	if pause_panel.visible:
+		_resume_battle()
+	elif not defeat_panel.visible and not victory_panel.visible:
+		_pause_battle()
 func _unhandled_input(event: InputEvent) -> void:
 	if (defeat_panel.visible or victory_panel.visible) and event.is_action_pressed(&"ui_cancel"):
 		_return_to_menu()
@@ -97,6 +127,8 @@ func _process(delta: float) -> void:
 		if _announcement_time <= 0.0:
 			announcement_label.visible = false
 	_update_boss_visibility()
+	_update_ultimate_ready_glow()
+	_update_low_health_pulse()
 	if debug_overlay.visible:
 		_refresh_debug()
 
@@ -123,6 +155,7 @@ func set_run_stats(elapsed_seconds: float, kill_count: int, combo_count: int = 0
 
 func show_defeat() -> void:
 	defeat_panel.visible = true
+	skill_bar.modulate = Color(0.62, 0.62, 0.68, 0.78)
 	_refresh_result_stats(defeat_stats_label)
 	show_announcement("守夜人倒下了", 2.0)
 
@@ -197,6 +230,7 @@ func _update_boss_visibility() -> void:
 func _on_player_health_changed(current: float, maximum: float) -> void:
 	hp_bar.max_value = maximum
 	hp_bar.value = current
+	_health_ratio = clampf(current / maxf(maximum, 1.0), 0.0, 1.0)
 	hp_text.text = "生命 %s / %s" % [ceili(current), ceili(maximum)]
 
 func _on_experience_changed(current: int, required: int, level: int) -> void:
@@ -228,19 +262,36 @@ func _refresh_skill_slots() -> void:
 	_skill_ids.clear()
 	for index in 3:
 		var data: Resource = _skill_manager.get_skill_data(index)
+		var slot := get_node_or_null("SkillBar/Slots/SkillSlot%s" % (index + 1))
+		if slot == null:
+			_skill_ids.append(StringName())
+			continue
+		slot.visible = true
 		if data == null:
+			_skill_ids.append(StringName())
+			_set_skill_slot_unavailable(slot)
 			continue
 		var skill_id := StringName(str(data.get("skill_id")))
 		_skill_ids.append(skill_id)
-		var slot := get_node_or_null("SkillBar/SkillSlot%s" % (index + 1))
-		if slot == null:
-			continue
+		slot.modulate = Color.WHITE
 		slot.tooltip_text = str(data.get("display_name"))
-		slot.get_node("Content/Level").text = "等级.%s" % _skill_manager.get_skill_level(skill_id)
+		slot.get_node("Content/Level").text = "%s" % _skill_manager.get_skill_level(skill_id)
 		var bar: ProgressBar = slot.get_node("Content/Cooldown")
 		bar.max_value = float(data.get("base_cooldown"))
 		bar.value = float(data.get("base_cooldown"))
-		slot.get_node("Content/CooldownText").text = "就绪"
+		_set_skill_slot_cooldown_visual(slot, 0.0, float(data.get("base_cooldown")))
+
+func _set_skill_slot_unavailable(slot: Control) -> void:
+	slot.modulate = Color(0.52, 0.52, 0.58, 1.0)
+	slot.tooltip_text = ""
+	slot.get_node("Content/Level").text = "-"
+	var mask: ColorRect = slot.get_node("Content/CooldownMask")
+	mask.visible = true
+	mask.position = Vector2(8.0, 10.0)
+	mask.size = Vector2(48.0, 48.0)
+	slot.get_node("Content/CooldownText").text = ""
+	slot.get_node("Content/ReadyFrame").visible = false
+	slot.get_node("Content/IconTexture").modulate = Color(0.46, 0.46, 0.5, 1.0)
 
 func _on_skill_upgrade_applied(_upgrade: Resource, _level: int, _branch: StringName) -> void:
 	_refresh_skill_slots()
@@ -249,18 +300,50 @@ func _on_skill_cooldown_changed(skill_id: StringName, remaining: float, total: f
 	var index := _skill_ids.find(skill_id)
 	if index < 0:
 		return
-	var slot := get_node_or_null("SkillBar/SkillSlot%s" % (index + 1))
+	var slot := get_node_or_null("SkillBar/Slots/SkillSlot%s" % (index + 1))
 	if slot == null:
 		return
 	var bar: ProgressBar = slot.get_node("Content/Cooldown")
 	bar.max_value = total
 	bar.value = maxf(total - remaining, 0.0)
-	slot.get_node("Content/CooldownText").text = "就绪" if remaining <= 0.02 else "%.1fs" % remaining
+	_set_skill_slot_cooldown_visual(slot, remaining, total)
+
+func _set_skill_slot_cooldown_visual(slot: Control, remaining: float, total: float) -> void:
+	var is_ready := remaining <= 0.02
+	var fraction := clampf(remaining / maxf(total, 0.001), 0.0, 1.0)
+	var mask: ColorRect = slot.get_node("Content/CooldownMask")
+	var cooldown_text: Label = slot.get_node("Content/CooldownText")
+	var ready_frame: Control = slot.get_node("Content/ReadyFrame")
+	var icon_texture: TextureRect = slot.get_node("Content/IconTexture")
+	mask.visible = not is_ready
+	mask.position = Vector2(8.0, 10.0 + 48.0 * (1.0 - fraction))
+	mask.size = Vector2(48.0, 48.0 * fraction)
+	cooldown_text.text = "" if is_ready else ("%ds" % ceili(remaining) if remaining > 1.0 else "%.1fs" % remaining)
+	ready_frame.visible = is_ready
+	icon_texture.modulate = Color.WHITE if is_ready else Color(0.42, 0.42, 0.48, 1.0)
 
 func _on_ultimate_energy_changed(current: float, maximum: float) -> void:
 	ultimate_bar.max_value = maximum
 	ultimate_bar.value = current
-	ultimate_text.text = "满能量" if current >= maximum else "%s%%" % ceili(current / maxf(maximum, 1.0) * 100.0)
+	ultimate_text.text = "%s%%" % ceili(current / maxf(maximum, 1.0) * 100.0)
+	_ultimate_ready = current >= maximum
+	ultimate_icon.modulate = Color.WHITE if _ultimate_ready else Color(0.45, 0.42, 0.5, 1.0)
+	var ready_glow: Control = get_node_or_null("SkillBar/Slots/UltimateSlot/Content/ReadyGlow")
+	if ready_glow != null:
+		ready_glow.visible = _ultimate_ready
+
+func _update_low_health_pulse() -> void:
+	var should_pulse := _health_ratio > 0.0 and _health_ratio < 0.3
+	low_health_frame.visible = should_pulse
+	if should_pulse:
+		low_health_frame.modulate.a = 0.58 + sin(Time.get_ticks_msec() * 0.004) * 0.22
+
+func _update_ultimate_ready_glow() -> void:
+	if not _ultimate_ready:
+		return
+	var ready_glow: Control = get_node_or_null("SkillBar/Slots/UltimateSlot/Content/ReadyGlow")
+	if ready_glow != null:
+		ready_glow.modulate.a = 0.68 + sin(Time.get_ticks_msec() * 0.004) * 0.16
 
 func _refresh_debug() -> void:
 	var state := "none" if _player == null else str(_player.get_state_name())

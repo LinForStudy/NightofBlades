@@ -1,0 +1,21 @@
+{
+    "input":  "attack_2/review/attempt_004/sheet-transparent.png",
+    "expected_size":  [
+                          576,
+                          96
+                      ],
+    "actual_size":  [
+                        576,
+                        96
+                    ],
+    "runtime_layout":  "horizontal_6_frame_strip",
+    "frames":  6,
+    "feet_y":  82,
+    "visible_height_mean":  60.5,
+    "idle_height":  67,
+    "profile_body_scale_drift":  0.067008173777078239,
+    "empty_count":  0,
+    "edge_touch_count":  0,
+    "paste_clamped_count":  0,
+    "passed":  true
+}

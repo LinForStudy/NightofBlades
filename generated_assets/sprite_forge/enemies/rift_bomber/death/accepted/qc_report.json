@@ -1,0 +1,123 @@
+{
+    "input":  "generated_assets/sprite_forge/enemies/rift_bomber/death/review/attempt_002/sheet-transparent.png",
+    "raw_source":  "generated_assets/sprite_forge/enemies/rift_bomber/death/review/attempt_002/raw-sheet.png",
+    "raw_source_size":  [
+                            1536,
+                            1024
+                        ],
+    "raw_grid":  [
+                     2,
+                     3
+                 ],
+    "expected_size":  [
+                          576,
+                          96
+                      ],
+    "actual_size":  [
+                        576,
+                        96
+                    ],
+    "runtime_layout":  "horizontal_6_frame_strip_reassembled_from_validated_2x3_source_grid",
+    "frames":  [
+                   {
+                       "touches_edge":  false,
+                       "feet_y":  76,
+                       "bbox":  [
+                                    31,
+                                    27,
+                                    64,
+                                    1,
+                                    76,
+                                    1
+                                ],
+                       "valid":  true,
+                       "visible_height":  50,
+                       "index":  0
+                   },
+                   {
+                       "touches_edge":  false,
+                       "feet_y":  76,
+                       "bbox":  [
+                                    29,
+                                    36,
+                                    65,
+                                    1,
+                                    76,
+                                    1
+                                ],
+                       "valid":  true,
+                       "visible_height":  41,
+                       "index":  1
+                   },
+                   {
+                       "touches_edge":  false,
+                       "feet_y":  76,
+                       "bbox":  [
+                                    25,
+                                    34,
+                                    69,
+                                    1,
+                                    76,
+                                    1
+                                ],
+                       "valid":  true,
+                       "visible_height":  43,
+                       "index":  2
+                   },
+                   {
+                       "touches_edge":  false,
+                       "feet_y":  76,
+                       "bbox":  [
+                                    29,
+                                    36,
+                                    66,
+                                    1,
+                                    76,
+                                    1
+                                ],
+                       "valid":  true,
+                       "visible_height":  41,
+                       "index":  3
+                   },
+                   {
+                       "touches_edge":  false,
+                       "feet_y":  76,
+                       "bbox":  [
+                                    24,
+                                    47,
+                                    70,
+                                    1,
+                                    76,
+                                    1
+                                ],
+                       "valid":  true,
+                       "visible_height":  30,
+                       "index":  4
+                   },
+                   {
+                       "touches_edge":  false,
+                       "feet_y":  76,
+                       "bbox":  [
+                                    19,
+                                    53,
+                                    75,
+                                    1,
+                                    76,
+                                    1
+                                ],
+                       "valid":  true,
+                       "visible_height":  24,
+                       "index":  5
+                   }
+               ],
+    "passed":  true,
+    "summary":  {
+                    "visible_height_mean":  38.166666666666664,
+                    "body_scale_cv":  0.05563812157633246,
+                    "anchor_y_std":  0.044464910883522786,
+                    "source_edge_touch_count":  0,
+                    "output_edge_touch_count":  0,
+                    "paste_clamped_count":  0,
+                    "empty_count":  0
+                }
+}
